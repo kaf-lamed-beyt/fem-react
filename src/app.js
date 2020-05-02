@@ -3,11 +3,15 @@ import ReactDOM from "react-dom"
 
 export default class SignUpForm extends React.Component {
     constructor() {
-        super()
+        super();
         this.state = {
             firstname: '',
         }
-    }
+
+        handleNameChange(e) {
+          this.setState({[e.target.name]: e.target.value})
+        }
+    };
 
     render() {
         return (
