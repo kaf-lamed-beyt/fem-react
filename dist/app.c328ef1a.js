@@ -28323,15 +28323,15 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-var SignUpForm = /*#__PURE__*/function (_React$Component) {
-  _inherits(SignUpForm, _React$Component);
+var App = /*#__PURE__*/function (_React$Component) {
+  _inherits(App, _React$Component);
 
-  var _super = _createSuper(SignUpForm);
+  var _super = _createSuper(App);
 
-  function SignUpForm() {
+  function App() {
     var _this;
 
-    _classCallCheck(this, SignUpForm);
+    _classCallCheck(this, App);
 
     _this = _super.call(this);
     _this.state = {
@@ -28341,7 +28341,7 @@ var SignUpForm = /*#__PURE__*/function (_React$Component) {
     return _this;
   }
 
-  _createClass(SignUpForm, [{
+  _createClass(App, [{
     key: "handleNameChange",
     value: function handleNameChange(e) {
       this.setState(_defineProperty({}, e.target.name, e.target.value));
@@ -28349,6 +28349,7 @@ var SignUpForm = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var firstname = this.state.firstname;
       return /*#__PURE__*/_react.default.createElement("div", {
         className: "app"
       }, /*#__PURE__*/_react.default.createElement("form", null, /*#__PURE__*/_react.default.createElement("label", null, "First name", /*#__PURE__*/_react.default.createElement("input", {
@@ -28361,12 +28362,12 @@ var SignUpForm = /*#__PURE__*/function (_React$Component) {
     }
   }]);
 
-  return SignUpForm;
+  return App;
 }(_react.default.Component);
 
-exports.default = SignUpForm;
+exports.default = App;
 
-_reactDom.default.render( /*#__PURE__*/_react.default.createElement(SignUpForm, null), document.getElementById("root"));
+_reactDom.default.render( /*#__PURE__*/_react.default.createElement(App, null), document.getElementById("root"));
 },{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';

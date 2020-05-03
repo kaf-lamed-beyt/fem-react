@@ -1,7 +1,7 @@
 import React from "react"
 import ReactDOM from "react-dom"
 
-export default class SignUpForm extends React.Component {
+export default class App extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -18,6 +18,8 @@ export default class SignUpForm extends React.Component {
     }
 
     render() {
+      const { firstname } = this.state
+      
         return (
             <div className="app">
                 <form>
@@ -37,4 +39,4 @@ export default class SignUpForm extends React.Component {
     }
 }
 
-ReactDOM.render(<SignUpForm />, document.getElementById("root"))
+ReactDOM.render(<App />, document.getElementById("root"))
