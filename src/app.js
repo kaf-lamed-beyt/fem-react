@@ -8,10 +8,14 @@ export default class SignUpForm extends React.Component {
             firstname: '',
         }
 
-        handleNameChange(e) {
-          this.setState({[e.target.name]: e.target.value})
-        }
+        this.handleNameChange = this.handleNameChange.bind(this)
     };
+
+    handleNameChange(e) {
+      this.setState({
+        [e.target.name]: e.target.value
+      })
+    }
 
     render() {
         return (
