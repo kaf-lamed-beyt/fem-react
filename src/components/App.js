@@ -1,5 +1,4 @@
-import React from "react"
-import ReactDOM from "react-dom"
+import React from 'react'
 
 export default class App extends React.Component {
     constructor() {
@@ -38,5 +37,3 @@ export default class App extends React.Component {
         )
     }
 }
-
-ReactDOM.render(<App />, document.getElementById("root"))
