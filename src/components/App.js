@@ -1,4 +1,5 @@
 import React from 'react'
+import PostForm from './Blog'
 
 export default class App extends React.Component {
     constructor() {
@@ -33,6 +34,7 @@ export default class App extends React.Component {
                         />
                     </label>
                 </form>
+                <PostForm title={currentTitle} body={currnetBody} />
             </div>
         )
     }
