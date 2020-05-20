@@ -34,7 +34,6 @@ export default class App extends React.Component {
                         />
                     </label>
                 </form>
-                <PostForm title={currentTitle} body={currnetBody} />
             </div>
         )
     }
