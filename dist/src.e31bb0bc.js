@@ -32190,13 +32190,13 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireWildcard(require("react"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -32218,49 +32218,53 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-var App = /*#__PURE__*/function (_React$Component) {
-  _inherits(App, _React$Component);
+var list = [{
+  title: 'React',
+  url: 'https://facebook.github.io/react/',
+  author: 'Jordan Walke',
+  num_comments: 3,
+  points: 4,
+  objectID: 0
+}, {
+  title: 'Redux',
+  url: 'https://github.com/reactjs/redux',
+  author: 'Dan Abramov, Andrew Clark',
+  num_comments: 2,
+  points: 5,
+  objectID: 1
+}];
+
+var App = /*#__PURE__*/function (_Component) {
+  _inherits(App, _Component);
 
   var _super = _createSuper(App);
 
   function App() {
-    var _this;
-
     _classCallCheck(this, App);
 
-    _this = _super.call(this);
-    _this.state = {
-      firstname: ''
-    };
-    _this.handleNameChange = _this.handleNameChange.bind(_assertThisInitialized(_this));
-    return _this;
+    return _super.apply(this, arguments);
   }
 
   _createClass(App, [{
-    key: "handleNameChange",
-    value: function handleNameChange(e) {
-      this.setState(_defineProperty({}, e.target.name, e.target.value));
-    }
-  }, {
     key: "render",
     value: function render() {
-      var firstname = this.state.firstname;
       return /*#__PURE__*/_react.default.createElement("div", {
         className: "app"
-      }, /*#__PURE__*/_react.default.createElement("form", null, /*#__PURE__*/_react.default.createElement("label", null, "First name", /*#__PURE__*/_react.default.createElement("input", {
-        type: "text",
-        name: "firstname",
-        placeholder: "enter your name",
-        value: firstname,
-        onChange: this.handleNameChange
-      }))));
+      }, list.map(function (item, key) {
+        return /*#__PURE__*/_react.default.createElement("div", {
+          key: key
+        }, /*#__PURE__*/_react.default.createElement("span", null, /*#__PURE__*/_react.default.createElement("a", {
+          href: item.url
+        }, item.title)), /*#__PURE__*/_react.default.createElement("span", null, item.author), " ", '', /*#__PURE__*/_react.default.createElement("span", null, item.num_comments), " ", '', /*#__PURE__*/_react.default.createElement("span", null, item.points));
+      }));
     }
   }]);
 
   return App;
-}(_react.default.Component);
+}(_react.Component);
 
-exports.default = App;
+var _default = App;
+exports.default = _default;
 },{"react":"../node_modules/react/index.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
@@ -32281,7 +32285,12 @@ _react.default.createElement(_reactRouterDom.BrowserRouter, null, /*#__PURE__*/_
   component: _App.default
 })));
 
-_reactDom.default.render( /*#__PURE__*/_react.default.createElement(_App.default, null), document.getElementById("root"));
+_reactDom.default.render( /*#__PURE__*/_react.default.createElement(_App.default, null), document.getElementById('root')); // hot module replacement
+
+
+if (module.hot) {
+  module.hot.accept();
+}
 },{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","./components/App":"components/App.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -32310,7 +32319,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "43459" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "46079" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

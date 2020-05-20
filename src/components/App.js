@@ -1,40 +1,43 @@
-import React from 'react'
-import PostForm from './Blog'
+import React, { Component } from 'react'
 
-export default class App extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            firstname: '',
-        }
+const list = [
+    {
+        title: 'React',
+        url: 'https://facebook.github.io/react/',
+        author: 'Jordan Walke',
+        num_comments: 3,
+        points: 4,
+        objectID: 0,
+    },
+    {
+        title: 'Redux',
+        url: 'https://github.com/reactjs/redux',
+        author: 'Dan Abramov, Andrew Clark',
+        num_comments: 2,
+        points: 5,
+        objectID: 1,
+    },
+]
 
-        this.handleNameChange = this.handleNameChange.bind(this)
-    };
-
-    handleNameChange(e) {
-      this.setState({
-        [e.target.name]: e.target.value
-      })
-    }
-
+class App extends Component {
     render() {
-      const { firstname } = this.state
-      
         return (
             <div className="app">
-                <form>
-                    <label>
-                        First name
-                        <input
-                            type="text"
-                            name="firstname"
-                            placeholder="enter your name"
-                            value={firstname}
-                            onChange={this.handleNameChange}
-                        />
-                    </label>
-                </form>
+                {list.map((item, key) => {
+                    return (
+                        <div key={key}>
+                            <span>
+                                <a href={item.url}>{item.title}</a>
+                            </span>
+                            <span>{item.author}</span> {''}
+                            <span>{item.num_comments}</span> {''}
+                            <span>{item.points}</span>
+                        </div>
+                    )
+                })}
             </div>
         )
     }
 }
+
+export default App

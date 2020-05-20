@@ -1,4 +1,3 @@
-
 class Dev {
     constructor(firstname, lastname) {
         this.firstname = firstname
