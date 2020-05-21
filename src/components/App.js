@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import Binds from './Bindings'
 
 
 const list = [
@@ -88,6 +88,7 @@ class App extends React.Component {
                     )
                 })}
                 <TodoList todos={todos} />
+                <Binds />
             </div>
         )
     }
