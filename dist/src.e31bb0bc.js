@@ -32190,13 +32190,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _react = _interopRequireWildcard(require("react"));
+var _react = _interopRequireDefault(require("react"));
 
 var _reactRouterDom = require("react-router-dom");
 
-function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -32243,8 +32241,7 @@ function TodoItems(props) {
 function TodoList(props) {
   var todos = props.todos;
   var todoItems = todos.map(function (todo) {
-    /*#__PURE__*/
-    _react.default.createElement(TodoItems, {
+    return /*#__PURE__*/_react.default.createElement(TodoItems, {
       key: todo,
       value: todo
     });
@@ -32254,28 +32251,63 @@ function TodoList(props) {
 
 var todos = ['one big fat chicken', 'two big fat chickens', 'three big fat fickity fackity chickens'];
 
-var App = /*#__PURE__*/function (_Component) {
-  _inherits(App, _Component);
+function Greet(props) {
+  return /*#__PURE__*/_react.default.createElement("h1", null, props.message);
+}
+
+var App = /*#__PURE__*/function (_React$Component) {
+  _inherits(App, _React$Component);
 
   var _super = _createSuper(App);
 
-  function App() {
+  function App(props) {
+    var _this;
+
     _classCallCheck(this, App);
 
-    return _super.apply(this, arguments);
+    _this = _super.call(this, props);
+    _this.state = {
+      list: list
+    };
+    _this.onDismiss = _this.onDismiss.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(App, [{
+    key: "onDismiss",
+    value: function onDismiss(id) {
+      var list = this.state.list;
+
+      function isNotId(item) {
+        return item.objectID !== id;
+      }
+
+      var updatedList = list.filter(isNotId); // filters the list that doesn't correspond with the provided id
+
+      this.setState({
+        list: updatedList
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
+      var list = this.state.list;
       return /*#__PURE__*/_react.default.createElement("div", {
         className: "app"
-      }, /*#__PURE__*/_react.default.createElement("h1", null, "Hello"), list.map(function (item, key) {
+      }, /*#__PURE__*/_react.default.createElement(Greet, {
+        message: "Hello props"
+      }), list.map(function (item) {
         return /*#__PURE__*/_react.default.createElement("div", {
-          key: key
+          key: item.objectID
         }, /*#__PURE__*/_react.default.createElement("span", null, /*#__PURE__*/_react.default.createElement("a", {
           href: item.url
-        }, item.title)), /*#__PURE__*/_react.default.createElement("span", null, item.author), " ", '', /*#__PURE__*/_react.default.createElement("span", null, item.num_comments), " ", '', /*#__PURE__*/_react.default.createElement("span", null, item.points));
+        }, item.title)), /*#__PURE__*/_react.default.createElement("span", null, item.author), /*#__PURE__*/_react.default.createElement("span", null, item.points), /*#__PURE__*/_react.default.createElement("span", null, item.num_comments), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("button", {
+          onClick: function onClick() {
+            return _this2.onDismiss(item.objectID);
+          }
+        }, "Dismiss")));
       }), /*#__PURE__*/_react.default.createElement(TodoList, {
         todos: todos
       }));
@@ -32283,19 +32315,11 @@ var App = /*#__PURE__*/function (_Component) {
   }]);
 
   return App;
-}(_react.Component);
+}(_react.default.Component);
 
 var _default = App;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js"}],"components/TodoList.js":[function(require,module,exports) {
-"use strict";
-
-var _react = _interopRequireDefault(require("react"));
-
-var _reactDom = _interopRequireDefault(require("react-dom"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js"}],"index.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -32306,8 +32330,6 @@ var _reactRouterDom = require("react-router-dom");
 
 var _App = _interopRequireDefault(require("./components/App"));
 
-var _TodoList = _interopRequireDefault(require("./components/TodoList"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /*#__PURE__*/
@@ -32315,10 +32337,6 @@ _react.default.createElement(_reactRouterDom.BrowserRouter, null, /*#__PURE__*/_
   exact: true,
   path: "/",
   component: _App.default
-}), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
-  exact: true,
-  path: "/todos",
-  component: _TodoList.default
 })));
 
 _reactDom.default.render( /*#__PURE__*/_react.default.createElement(_App.default, null), document.getElementById('root')); // hot module replacement
@@ -32327,7 +32345,7 @@ _reactDom.default.render( /*#__PURE__*/_react.default.createElement(_App.default
 if (module.hot) {
   module.hot.accept();
 }
-},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","./components/App":"components/App.js","./components/TodoList":"components/TodoList.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","./components/App":"components/App.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;

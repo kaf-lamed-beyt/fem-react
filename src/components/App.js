@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
+
 
 const list = [
     {
@@ -26,9 +27,9 @@ function TodoItems(props) {
 
 function TodoList(props) {
     const todos = props.todos
-    const todoItems = todos.map(todo => {
+    const todoItems = todos.map(todo => 
         <TodoItems key={todo} value={todo} />
-    })
+    )
     return <ul>{todoItems}</ul>
 }
 
@@ -39,20 +40,50 @@ const todos = [
 ]
 
 
-class App extends Component {
+function Greet(props) {
+    return <h1>{props.message}</h1>
+}
+class App extends React.Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            list,
+        }
+
+        this.onDismiss = this.onDismiss.bind(this)  
+    }
+
+
+    onDismiss(id) {
+        const { list } = this.state
+        function isNotId(item) {
+            return item.objectID !== id
+        }
+
+        const updatedList = list.filter(isNotId) // filters the list that doesn't correspond with the provided id
+        this.setState({
+            list: updatedList
+        })
+    }
+
     render() {
+        const { list } = this.state
         return (
             <div className="app">
-                <h1>Hello</h1>
-                {list.map((item, key) => {
+                <Greet message="Hello props" />
+                {list.map((item) => {
                     return (
-                        <div key={key}>
+                        <div key={item.objectID}>
                             <span>
                                 <a href={item.url}>{item.title}</a>
                             </span>
-                            <span>{item.author}</span> {''}
-                            <span>{item.num_comments}</span> {''}
+                            <span>{item.author}</span>
                             <span>{item.points}</span>
+                            <span>{item.num_comments}</span>
+                            <div>
+                            <button onClick={() => this.onDismiss(item.objectID)}>Dismiss</button>
+                            </div>
                         </div>
                     )
                 })}
