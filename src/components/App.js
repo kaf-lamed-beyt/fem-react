@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 const list = [
     {
@@ -19,10 +20,30 @@ const list = [
     },
 ]
 
+function TodoItems(props) {
+    return <li>{props.value}</li>
+}
+
+function TodoList(props) {
+    const todos = props.todos
+    const todoItems = todos.map(todo => {
+        <TodoItems key={todo} value={todo} />
+    })
+    return <ul>{todoItems}</ul>
+}
+
+const todos = [
+    'one big fat chicken',
+    'two big fat chickens',
+    'three big fat fickity fackity chickens',
+]
+
+
 class App extends Component {
     render() {
         return (
             <div className="app">
+                <h1>Hello</h1>
                 {list.map((item, key) => {
                     return (
                         <div key={key}>
@@ -35,6 +56,7 @@ class App extends Component {
                         </div>
                     )
                 })}
+                <TodoList todos={todos} />
             </div>
         )
     }

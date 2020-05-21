@@ -32192,6 +32192,8 @@ exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _reactRouterDom = require("react-router-dom");
+
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
@@ -32234,6 +32236,24 @@ var list = [{
   objectID: 1
 }];
 
+function TodoItems(props) {
+  return /*#__PURE__*/_react.default.createElement("li", null, props.value);
+}
+
+function TodoList(props) {
+  var todos = props.todos;
+  var todoItems = todos.map(function (todo) {
+    /*#__PURE__*/
+    _react.default.createElement(TodoItems, {
+      key: todo,
+      value: todo
+    });
+  });
+  return /*#__PURE__*/_react.default.createElement("ul", null, todoItems);
+}
+
+var todos = ['one big fat chicken', 'two big fat chickens', 'three big fat fickity fackity chickens'];
+
 var App = /*#__PURE__*/function (_Component) {
   _inherits(App, _Component);
 
@@ -32250,12 +32270,14 @@ var App = /*#__PURE__*/function (_Component) {
     value: function render() {
       return /*#__PURE__*/_react.default.createElement("div", {
         className: "app"
-      }, list.map(function (item, key) {
+      }, /*#__PURE__*/_react.default.createElement("h1", null, "Hello"), list.map(function (item, key) {
         return /*#__PURE__*/_react.default.createElement("div", {
           key: key
         }, /*#__PURE__*/_react.default.createElement("span", null, /*#__PURE__*/_react.default.createElement("a", {
           href: item.url
         }, item.title)), /*#__PURE__*/_react.default.createElement("span", null, item.author), " ", '', /*#__PURE__*/_react.default.createElement("span", null, item.num_comments), " ", '', /*#__PURE__*/_react.default.createElement("span", null, item.points));
+      }), /*#__PURE__*/_react.default.createElement(TodoList, {
+        todos: todos
       }));
     }
   }]);
@@ -32265,7 +32287,15 @@ var App = /*#__PURE__*/function (_Component) {
 
 var _default = App;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js"}],"index.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js"}],"components/TodoList.js":[function(require,module,exports) {
+"use strict";
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactDom = _interopRequireDefault(require("react-dom"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -32276,6 +32306,8 @@ var _reactRouterDom = require("react-router-dom");
 
 var _App = _interopRequireDefault(require("./components/App"));
 
+var _TodoList = _interopRequireDefault(require("./components/TodoList"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /*#__PURE__*/
@@ -32283,6 +32315,10 @@ _react.default.createElement(_reactRouterDom.BrowserRouter, null, /*#__PURE__*/_
   exact: true,
   path: "/",
   component: _App.default
+}), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
+  exact: true,
+  path: "/todos",
+  component: _TodoList.default
 })));
 
 _reactDom.default.render( /*#__PURE__*/_react.default.createElement(_App.default, null), document.getElementById('root')); // hot module replacement
@@ -32291,7 +32327,7 @@ _reactDom.default.render( /*#__PURE__*/_react.default.createElement(_App.default
 if (module.hot) {
   module.hot.accept();
 }
-},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","./components/App":"components/App.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","./components/App":"components/App.js","./components/TodoList":"components/TodoList.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -32319,7 +32355,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "46079" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "42723" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
