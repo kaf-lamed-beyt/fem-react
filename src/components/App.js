@@ -1,5 +1,6 @@
 import React from 'react'
 import Binds from './Bindings'
+import Clock from './Clock'
 
 
 const list = [
@@ -89,6 +90,7 @@ class App extends React.Component {
                 })}
                 <TodoList todos={todos} />
                 <Binds />
+                <Clock />
             </div>
         )
     }
