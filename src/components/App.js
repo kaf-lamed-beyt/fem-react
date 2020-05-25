@@ -1,6 +1,7 @@
 import React from 'react'
 import Binds from './Bindings'
 import Clock from './Clock'
+import Search from './Search'
 
 
 const list = [
@@ -72,6 +73,7 @@ class App extends React.Component {
         const { list } = this.state
         return (
             <div className="app">
+                <Search />
                 <Greet message="Hello props" />
                 {list.map((item) => {
                     return (

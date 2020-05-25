@@ -30,7 +30,7 @@ class Clock extends React.Component {
         return (
             <div>
                 <h1>Hello joshua</h1>
-                <h2>It is {date.toLocaleTimeString()}</h2>
+                <h2>The time is {date.toLocaleTimeString()}</h2>
             </div>
         )
     }
