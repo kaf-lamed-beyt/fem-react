@@ -5,13 +5,13 @@ class Clock extends React.Component {
         super()
 
         this.state = {
-            date: new Date()
+            date: new Date(),
         }
     }
 
     tick() {
         this.setState({
-            date: new Date()
+            date: new Date(),
         })
     }
 
@@ -23,7 +23,7 @@ class Clock extends React.Component {
     componentWillUnmount() {
         clearInterval(timerID)
     }
-    
+
     render() {
         const { date } = this.state
 

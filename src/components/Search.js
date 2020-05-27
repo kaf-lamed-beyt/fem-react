@@ -19,28 +19,50 @@ const list = [
     },
 ]
 
+function isSearched(searchTerm) {
+    return (item) => {
+        return item.title.toLowerCase().includes(searchTerm.toLowerCase())
+    }
+}
 export default class Search extends React.Component {
     constructor(props) {
         super(props)
 
         this.state = {
             list,
-            searchTerm: ''
+            searchTerm: '',
         }
+
+        this.onSearchChange = this.onSearchChange.bind(this)
     }
 
     onSearchChange(e) {
         this.setState({
-            searchTerm: e.target.value
+            searchTerm: e.target.value,
         })
     }
-    
+
     render() {
+        const { value, onChange, searchTerm } = this.props
+
         return (
             <div className="search__base">
                 <form>
-                    <input type="text" />
+                    <input
+                        type="text"
+                        value={searchTerm}
+                        onChange={this.isSearched}
+                    />
                 </form>
+                {list.filter(isSearched(searchTerm)).map((item) => {
+                    return (
+                        <div key={item.objectID}>
+                            <span>
+                                <a href={item.url}>{item.title}</a>
+                            </span>
+                        </div>
+                    )
+                })}
             </div>
         )
     }
