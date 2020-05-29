@@ -1,33 +1,20 @@
 import React from 'react'
-import Search from './Search'
-import Table from './Table'
-
+// import Search from './Search'
+// import Table from './Table'
+import list from '../assets/list'
 class App extends React.Component {
     constructor(props) {
         super(props)
 
-        this.onSearchChange = this.onSearchChange.bind(this)
-        this.onDismiss = this.onDismiss.bind(this)
-    }
-
-    onDismiss(id) {
-        const { list } = this.state
-        function isNotId(item) {
-            return item.objectID !== id
+        this.state = {
+            list, 
         }
-
-        const updatedList = list.filter(isNotId) // filters the list that doesn't correspond with the provided id
-        this.setState({
-            list: updatedList,
-        })
     }
 
     render() {
-        const { searchTerm, list } = this.state
         return (
             <div className="app">
-                <Search value={searchTerm} onChange={this.onSearchChange} />
-                <Table />
+                <h1>All these components splitting shits's beginning to get me pissed 💢 </h1>
             </div>
         )
     }
