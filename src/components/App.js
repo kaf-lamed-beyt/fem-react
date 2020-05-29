@@ -1,23 +1,18 @@
 import React from 'react'
-// import Search from './Search'
-// import Table from './Table'
-import list from '../assets/list'
-class App extends React.Component {
-    constructor(props) {
-        super(props)
+import recos from '../assets/list'
 
-        this.state = {
-            list, 
-        }
-    }
-
+export default class App extends React.Component {
     render() {
         return (
             <div className="app">
-                <h1>All these components splitting shits's beginning to get me pissed 💢 </h1>
+                {recos.map(listItem => {
+                    <div key={listItem.objectID}>
+                        <span>
+                            <a href={listItem.url}>{listItem.author}</a>
+                        </span>
+                    </div>
+                })}
             </div>
         )
     }
-}
-
-export default App
+} 

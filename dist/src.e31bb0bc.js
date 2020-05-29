@@ -32239,16 +32239,10 @@ var App = /*#__PURE__*/function (_React$Component) {
 
   var _super = _createSuper(App);
 
-  function App(props) {
-    var _this;
-
+  function App() {
     _classCallCheck(this, App);
 
-    _this = _super.call(this, props);
-    _this.state = {
-      list: _list.default
-    };
-    return _this;
+    return _super.apply(this, arguments);
   }
 
   _createClass(App, [{
@@ -32256,15 +32250,21 @@ var App = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       return /*#__PURE__*/_react.default.createElement("div", {
         className: "app"
-      }, /*#__PURE__*/_react.default.createElement("h1", null, "All these components splitting shits's beginning to get me pissed \uD83D\uDCA2 "));
+      }, _list.default.map(function (listItem) {
+        /*#__PURE__*/
+        _react.default.createElement("div", {
+          key: listItem.objectID
+        }, /*#__PURE__*/_react.default.createElement("span", null, /*#__PURE__*/_react.default.createElement("a", {
+          href: listItem.url
+        }, listItem.author)));
+      }));
     }
   }]);
 
   return App;
 }(_react.default.Component);
 
-var _default = App;
-exports.default = _default;
+exports.default = App;
 },{"react":"../node_modules/react/index.js","../assets/list":"assets/list.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
