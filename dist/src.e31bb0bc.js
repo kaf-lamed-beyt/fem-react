@@ -32296,15 +32296,15 @@ function isSearched(keyword) {
   };
 }
 
-var Serach = /*#__PURE__*/function (_React$Component) {
-  _inherits(Serach, _React$Component);
+var Search = /*#__PURE__*/function (_React$Component) {
+  _inherits(Search, _React$Component);
 
-  var _super = _createSuper(Serach);
+  var _super = _createSuper(Search);
 
-  function Serach() {
+  function Search() {
     var _this;
 
-    _classCallCheck(this, Serach);
+    _classCallCheck(this, Search);
 
     _this = _super.call(this);
     _this.state = {
@@ -32315,7 +32315,7 @@ var Serach = /*#__PURE__*/function (_React$Component) {
     return _this;
   }
 
-  _createClass(Serach, [{
+  _createClass(Search, [{
     key: "onSearchChange",
     value: function onSearchChange(e) {
       this.setState({
@@ -32346,10 +32346,10 @@ var Serach = /*#__PURE__*/function (_React$Component) {
     }
   }]);
 
-  return Serach;
+  return Search;
 }(_react.default.Component);
 
-exports.default = Serach;
+exports.default = Search;
 },{"react":"../node_modules/react/index.js"}],"components/App.js":[function(require,module,exports) {
 "use strict";
 
@@ -32516,7 +32516,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "34475" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "35455" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

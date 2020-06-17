@@ -26,7 +26,7 @@ function isSearched(keyword) {
     }
 }
 
-export default class Serach extends React.Component {
+export default class Search extends React.Component {
     constructor() {
         super()
 
