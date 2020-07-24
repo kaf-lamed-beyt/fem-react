@@ -35,16 +35,19 @@ export default class App extends Component {
             <div className="base">
                 <h1>Hey there! 😉 </h1>
                 {/* undirectional data flow */}
-                {
-                    list.map((item) => {
-                        return (
-                            <div key={item.objectID}>
-                                <span>
-                                    <a href={item.url}>{item.title}</a>
-                                </span>
-                            </div>
-                        )
-                    })}
+                {list.map((item) => {
+                    return (
+                        <div key={item.objectID}>
+                            <span>
+                                Book title:  <a href={item.url}>{item.title}</a>
+                            </span>
+                            <p>Author: {item.author}</p>
+                            <p>Number of comments: {item.num_comments}</p>
+                            <p>Numer of points: {item.points}</p>
+                            <hr />
+                        </div>
+                    )
+                })}
             </div>
         )
     }
