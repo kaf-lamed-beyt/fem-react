@@ -28351,12 +28351,26 @@ var App = /*#__PURE__*/function (_Component) {
     _this.state = {
       list: list
     };
+    _this.onDismiss = _this.onDismiss.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(App, [{
+    key: "onDismiss",
+    value: function onDismiss(id) {
+      var list = this.state.list;
+
+      var notTheSameId = function notTheSameId(item) {
+        return item.objectID !== id;
+      };
+
+      var updatedBookList = list.filter(notTheSameId); // console.log(updatedBookList)
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       var list = this.state.list;
       return /*#__PURE__*/_react.default.createElement("div", {
         className: "base"
@@ -28365,7 +28379,11 @@ var App = /*#__PURE__*/function (_Component) {
           key: item.objectID
         }, /*#__PURE__*/_react.default.createElement("hr", null), /*#__PURE__*/_react.default.createElement("span", null, "Book title: ", /*#__PURE__*/_react.default.createElement("a", {
           href: item.url
-        }, item.title)), /*#__PURE__*/_react.default.createElement("p", null, "Author: ", item.author), /*#__PURE__*/_react.default.createElement("p", null, "Number of comments: ", item.num_comments), /*#__PURE__*/_react.default.createElement("p", null, "Numer of points: ", item.points), /*#__PURE__*/_react.default.createElement("hr", null));
+        }, item.title)), /*#__PURE__*/_react.default.createElement("p", null, "Author: ", item.author), /*#__PURE__*/_react.default.createElement("p", null, "Number of comments: ", item.num_comments), /*#__PURE__*/_react.default.createElement("p", null, "Numer of points: ", item.points), /*#__PURE__*/_react.default.createElement("button", {
+          onClick: function onClick() {
+            return _this2.onDismiss(item.objectID);
+          }
+        }, "Dismiss"), /*#__PURE__*/_react.default.createElement("hr", null));
       }));
     }
   }]);

@@ -24,8 +24,21 @@ export default class App extends Component {
     super(props)
 
     this.state = {
-      list: list,
+      list,
     }
+
+    this.onDismiss = this.onDismiss.bind(this)
+  }
+
+  onDismiss(id) {
+    const { list } = this.state
+
+    const notTheSameId = (item) => {
+        return item.objectID !== id
+    }
+
+    const updatedBookList = list.filter(notTheSameId)
+    // console.log(updatedBookList)
   }
 
   render() {
@@ -45,6 +58,7 @@ export default class App extends Component {
               <p>Author: {item.author}</p>
               <p>Number of comments: {item.num_comments}</p>
               <p>Numer of points: {item.points}</p>
+              <button onClick={() => this.onDismiss(item.objectID)}>Dismiss</button>
               <hr />
             </div>
           )
