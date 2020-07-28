@@ -33,12 +33,15 @@ export default class App extends Component {
   onDismiss(id) {
     const { list } = this.state
 
-    const notTheSameId = (item) => {
+    const isNotSameId = (item) => {
         return item.objectID !== id
     }
 
-    const updatedBookList = list.filter(notTheSameId)
-    // console.log(updatedBookList)
+    const updatedBookList = list.filter(isNotSameId)
+    console.log(updatedBookList)
+    this.setState({
+        list: updatedBookList
+    })
   }
 
   render() {
@@ -49,6 +52,12 @@ export default class App extends Component {
         <h1>Hey there! 😉 </h1>
         {/* undirectional data flow */}
         {list.map((item) => {
+            // defining the delete event,
+            // so it lives inside of the mapped item block
+            const handleDismiss = () => {
+                this.onDismiss(item.objectID)
+            }
+
           return (
             <div key={item.objectID}>
               <hr />
@@ -58,7 +67,7 @@ export default class App extends Component {
               <p>Author: {item.author}</p>
               <p>Number of comments: {item.num_comments}</p>
               <p>Numer of points: {item.points}</p>
-              <button onClick={() => this.onDismiss(item.objectID)}>Dismiss</button>
+              <button onClick={handleDismiss}>Dismiss</button>
               <hr />
             </div>
           )

@@ -28360,11 +28360,15 @@ var App = /*#__PURE__*/function (_Component) {
     value: function onDismiss(id) {
       var list = this.state.list;
 
-      var notTheSameId = function notTheSameId(item) {
+      var isNotSameId = function isNotSameId(item) {
         return item.objectID !== id;
       };
 
-      var updatedBookList = list.filter(notTheSameId); // console.log(updatedBookList)
+      var updatedBookList = list.filter(isNotSameId);
+      console.log(updatedBookList);
+      this.setState({
+        list: updatedBookList
+      });
     }
   }, {
     key: "render",
@@ -28375,14 +28379,18 @@ var App = /*#__PURE__*/function (_Component) {
       return /*#__PURE__*/_react.default.createElement("div", {
         className: "base"
       }, /*#__PURE__*/_react.default.createElement("h1", null, "Hey there! \uD83D\uDE09 "), list.map(function (item) {
+        // defining the delete event,
+        // so it lives inside of the mapped item block
+        var handleDismiss = function handleDismiss() {
+          _this2.onDismiss(item.objectID);
+        };
+
         return /*#__PURE__*/_react.default.createElement("div", {
           key: item.objectID
         }, /*#__PURE__*/_react.default.createElement("hr", null), /*#__PURE__*/_react.default.createElement("span", null, "Book title: ", /*#__PURE__*/_react.default.createElement("a", {
           href: item.url
         }, item.title)), /*#__PURE__*/_react.default.createElement("p", null, "Author: ", item.author), /*#__PURE__*/_react.default.createElement("p", null, "Number of comments: ", item.num_comments), /*#__PURE__*/_react.default.createElement("p", null, "Numer of points: ", item.points), /*#__PURE__*/_react.default.createElement("button", {
-          onClick: function onClick() {
-            return _this2.onDismiss(item.objectID);
-          }
+          onClick: handleDismiss
         }, "Dismiss"), /*#__PURE__*/_react.default.createElement("hr", null));
       }));
     }
@@ -28432,7 +28440,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "39801" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44053" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
