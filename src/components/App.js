@@ -20,9 +20,9 @@ const list = [
 ]
 
 const searchedBook = (searchKeyword) => {
-    return (item => {
-        item.title
-    })
+  return (item) => {
+    item.title.toLowerCase().includes(searchKeyword.toLowerCase())
+  }
 }
 
 export default class App extends Component {
@@ -31,7 +31,7 @@ export default class App extends Component {
 
     this.state = {
       list,
-      searchKeyword: ''
+      searchKeyword: '',
     }
 
     this.onDismiss = this.onDismiss.bind(this)
@@ -54,21 +54,21 @@ export default class App extends Component {
 
   onSearchInput(e) {
     this.setState({
-        searchKeyword: e.target.value
+      searchKeyword: e.target.value,
     })
   }
 
   render() {
-    const { list, searchKeyword } = this.state
+    const { list } = this.state
 
     return (
       <div className="base">
         <h1>Hey there! 😉 </h1>
         <form>
-            <input type="text" onChange={this.onSearchInput}/>
+          <input type="text" onChange={this.onSearchInput} />
         </form>
         {/* undirectional data flow */}
-        {list.filter(searchedBook(searchKeyword)).map((item) => {
+        {list.filter(searchedBook(this.state.searchKeyword)).map((item) => {
           // defining the delete event,
           // so it lives inside of the mapped item block
           const handleDismiss = () => {

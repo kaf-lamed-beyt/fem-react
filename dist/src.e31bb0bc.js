@@ -28339,7 +28339,7 @@ var list = [{
 
 var searchedBook = function searchedBook(searchKeyword) {
   return function (item) {
-    item.title;
+    item.title.toLowerCase().includes(searchKeyword.toLowerCase());
   };
 };
 
@@ -28390,15 +28390,13 @@ var App = /*#__PURE__*/function (_Component) {
     value: function render() {
       var _this2 = this;
 
-      var _this$state = this.state,
-          list = _this$state.list,
-          searchKeyword = _this$state.searchKeyword;
+      var list = this.state.list;
       return /*#__PURE__*/_react.default.createElement("div", {
         className: "base"
       }, /*#__PURE__*/_react.default.createElement("h1", null, "Hey there! \uD83D\uDE09 "), /*#__PURE__*/_react.default.createElement("form", null, /*#__PURE__*/_react.default.createElement("input", {
         type: "text",
         onChange: this.onSearchInput
-      })), list.filter(searchedBook(searchKeyword)).map(function (item) {
+      })), list.filter(searchedBook(this.state.searchKeyword)).map(function (item) {
         // defining the delete event,
         // so it lives inside of the mapped item block
         var handleDismiss = function handleDismiss() {
