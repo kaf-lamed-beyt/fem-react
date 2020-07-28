@@ -28337,6 +28337,12 @@ var list = [{
   objectID: 1
 }];
 
+var searchedBook = function searchedBook(searchKeyword) {
+  return function (item) {
+    item.title;
+  };
+};
+
 var App = /*#__PURE__*/function (_Component) {
   _inherits(App, _Component);
 
@@ -28349,9 +28355,11 @@ var App = /*#__PURE__*/function (_Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      list: list
+      list: list,
+      searchKeyword: ''
     };
     _this.onDismiss = _this.onDismiss.bind(_assertThisInitialized(_this));
+    _this.onSearchInput = _this.onSearchInput.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -28371,14 +28379,26 @@ var App = /*#__PURE__*/function (_Component) {
       });
     }
   }, {
+    key: "onSearchInput",
+    value: function onSearchInput(e) {
+      this.setState({
+        searchKeyword: e.target.value
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this2 = this;
 
-      var list = this.state.list;
+      var _this$state = this.state,
+          list = _this$state.list,
+          searchKeyword = _this$state.searchKeyword;
       return /*#__PURE__*/_react.default.createElement("div", {
         className: "base"
-      }, /*#__PURE__*/_react.default.createElement("h1", null, "Hey there! \uD83D\uDE09 "), list.map(function (item) {
+      }, /*#__PURE__*/_react.default.createElement("h1", null, "Hey there! \uD83D\uDE09 "), /*#__PURE__*/_react.default.createElement("form", null, /*#__PURE__*/_react.default.createElement("input", {
+        type: "text",
+        onChange: this.onSearchInput
+      })), list.filter(searchedBook(searchKeyword)).map(function (item) {
         // defining the delete event,
         // so it lives inside of the mapped item block
         var handleDismiss = function handleDismiss() {
@@ -28440,7 +28460,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44053" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "42803" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -19,44 +19,61 @@ const list = [
   },
 ]
 
+const searchedBook = (searchKeyword) => {
+    return (item => {
+        item.title
+    })
+}
+
 export default class App extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
       list,
+      searchKeyword: ''
     }
 
     this.onDismiss = this.onDismiss.bind(this)
+    this.onSearchInput = this.onSearchInput.bind(this)
   }
 
   onDismiss(id) {
     const { list } = this.state
 
     const isNotSameId = (item) => {
-        return item.objectID !== id
+      return item.objectID !== id
     }
 
     const updatedBookList = list.filter(isNotSameId)
     console.log(updatedBookList)
     this.setState({
-        list: updatedBookList
+      list: updatedBookList,
+    })
+  }
+
+  onSearchInput(e) {
+    this.setState({
+        searchKeyword: e.target.value
     })
   }
 
   render() {
-    const { list } = this.state
+    const { list, searchKeyword } = this.state
 
     return (
       <div className="base">
         <h1>Hey there! 😉 </h1>
+        <form>
+            <input type="text" onChange={this.onSearchInput}/>
+        </form>
         {/* undirectional data flow */}
-        {list.map((item) => {
-            // defining the delete event,
-            // so it lives inside of the mapped item block
-            const handleDismiss = () => {
-                this.onDismiss(item.objectID)
-            }
+        {list.filter(searchedBook(searchKeyword)).map((item) => {
+          // defining the delete event,
+          // so it lives inside of the mapped item block
+          const handleDismiss = () => {
+            this.onDismiss(item.objectID)
+          }
 
           return (
             <div key={item.objectID}>
