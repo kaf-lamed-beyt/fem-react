@@ -28373,7 +28373,8 @@ var App = /*#__PURE__*/function (_Component) {
       };
 
       var updatedBookList = list.filter(isNotSameId);
-      console.log(updatedBookList);
+      console.log(updatedBookList); // logs the remaining book item to the console.
+
       this.setState({
         list: updatedBookList
       });
@@ -28388,19 +28389,80 @@ var App = /*#__PURE__*/function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
-
-      var list = this.state.list;
+      var _this$state = this.state,
+          list = _this$state.list,
+          searchKeyword = _this$state.searchKeyword;
       return /*#__PURE__*/_react.default.createElement("div", {
         className: "base"
-      }, /*#__PURE__*/_react.default.createElement("h1", null, "Hey there! \uD83D\uDE09 "), /*#__PURE__*/_react.default.createElement("form", null, /*#__PURE__*/_react.default.createElement("input", {
-        type: "text",
+      }, /*#__PURE__*/_react.default.createElement("h1", null, "Hey there! \uD83D\uDE09 "), /*#__PURE__*/_react.default.createElement(Search, {
+        value: searchKeyword,
         onChange: this.onSearchInput
-      })), list.filter(searchedBook(this.state.searchKeyword)).map(function (item) {
+      }), /*#__PURE__*/_react.default.createElement(Table, {
+        list: list,
+        pattern: searchKeyword,
+        onDismiss: this.onDismiss
+      }));
+    }
+  }]);
+
+  return App;
+}(_react.Component);
+
+exports.default = App;
+
+var Search = /*#__PURE__*/function (_React$Component) {
+  _inherits(Search, _React$Component);
+
+  var _super2 = _createSuper(Search);
+
+  function Search() {
+    _classCallCheck(this, Search);
+
+    return _super2.apply(this, arguments);
+  }
+
+  _createClass(Search, [{
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          value = _this$props.value,
+          onChange = _this$props.onChange;
+      return /*#__PURE__*/_react.default.createElement("form", null, /*#__PURE__*/_react.default.createElement("input", {
+        type: "text",
+        name: "book",
+        value: value,
+        onChange: onChange
+      }));
+    }
+  }]);
+
+  return Search;
+}(_react.default.Component); // table component showing list of books.
+
+
+var Table = /*#__PURE__*/function (_React$Component2) {
+  _inherits(Table, _React$Component2);
+
+  var _super3 = _createSuper(Table);
+
+  function Table() {
+    _classCallCheck(this, Table);
+
+    return _super3.apply(this, arguments);
+  }
+
+  _createClass(Table, [{
+    key: "render",
+    value: function render() {
+      var _this$props2 = this.props,
+          list = _this$props2.list,
+          pattern = _this$props2.pattern,
+          onDismiss = _this$props2.onDismiss;
+      return /*#__PURE__*/_react.default.createElement("div", null, list.filter(searchedBook(pattern)).map(function (item) {
         // defining the delete event,
         // so it lives inside of the mapped item block
         var handleDismiss = function handleDismiss() {
-          _this2.onDismiss(item.objectID);
+          onDismiss(item.objectID);
         };
 
         return /*#__PURE__*/_react.default.createElement("div", {
@@ -28414,10 +28476,8 @@ var App = /*#__PURE__*/function (_Component) {
     }
   }]);
 
-  return App;
-}(_react.Component);
-
-exports.default = App;
+  return Table;
+}(_react.default.Component);
 },{"react":"../node_modules/react/index.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
@@ -28458,7 +28518,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "42803" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44355" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

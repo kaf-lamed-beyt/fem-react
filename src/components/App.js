@@ -46,7 +46,9 @@ export default class App extends Component {
     }
 
     const updatedBookList = list.filter(isNotSameId)
-    console.log(updatedBookList)
+
+    console.log(updatedBookList) // logs the remaining book item to the console.
+
     this.setState({
       list: updatedBookList,
     })
@@ -59,20 +61,44 @@ export default class App extends Component {
   }
 
   render() {
-    const { list } = this.state
+    const { list, searchKeyword } = this.state
 
     return (
       <div className="base">
         <h1>Hey there! 😉 </h1>
-        <form>
-          <input type="text" onChange={this.onSearchInput} />
-        </form>
+        <Search value={searchKeyword} onChange={this.onSearchInput} />
+        <Table list={list} pattern={searchKeyword} onDismiss={this.onDismiss} />
+      </div>
+    )
+  }
+}
+
+class Search extends React.Component {
+  render() {
+    const { value, onChange } = this.props
+
+    return (
+      <form>
+        <input type="text" name="book" value={value} onChange={onChange} />
+      </form>
+    )
+  }
+}
+
+// table component showing list of books.
+
+class Table extends React.Component {
+  render() {
+    const { list, pattern, onDismiss } = this.props
+
+    return (
+      <div>
         {/* undirectional data flow */}
-        {list.filter(searchedBook(this.state.searchKeyword)).map((item) => {
+        {list.filter(searchedBook(pattern)).map((item) => {
           // defining the delete event,
           // so it lives inside of the mapped item block
           const handleDismiss = () => {
-            this.onDismiss(item.objectID)
+            onDismiss(item.objectID)
           }
 
           return (
