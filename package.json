@@ -6,15 +6,21 @@
   "scripts": {
     "dev": "parcel src/index.html --open",
     "format": "prettier --write \"src/**/*.{js,html,css,json}\"",
+    "build": "parcel src/index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Caleb Olojo",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.11.1",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
     "eslint": "^6.8.0",
     "prettier": "^2.0.4"
   },
   "dependencies": {
+    "babel-preset-react-app": "^9.1.2",
     "node-sass": "^4.14.1",
     "parcel-bundler": "^1.12.4",
     "react": "^16.13.1",

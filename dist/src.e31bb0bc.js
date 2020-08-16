@@ -28293,11 +28293,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _react = _interopRequireWildcard(require("react"));
+var _react = _interopRequireDefault(require("react"));
 
-function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -28311,7 +28309,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function () { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
@@ -28321,30 +28319,13 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-var list = [{
-  title: 'React',
-  url: 'https://facebook.github.io/react/',
-  author: 'Jordan Walke',
-  num_comments: 3,
-  points: 4,
-  objectID: 0
-}, {
-  title: 'Redux',
-  url: 'https://github.com/reactjs/redux',
-  author: 'Dan Abramov, Andrew Clark',
-  num_comments: 2,
-  points: 5,
-  objectID: 1
-}];
+var DEFAULT_QUERY = 'redux';
+var API_URL = "htpps://hn.algolia.com/api/v1".concat(API_ENDPOINT).concat(ENDPOINT_PARAM);
+var API_ENDPOINT = '/search';
+var ENDPOINT_PARAM = 'query=';
 
-var searchedBook = function searchedBook(searchKeyword) {
-  return function (item) {
-    item.title.toLowerCase().includes(searchKeyword.toLowerCase());
-  };
-};
-
-var App = /*#__PURE__*/function (_Component) {
-  _inherits(App, _Component);
+var App = /*#__PURE__*/function (_React$Component) {
+  _inherits(App, _React$Component);
 
   var _super = _createSuper(App);
 
@@ -28355,129 +28336,43 @@ var App = /*#__PURE__*/function (_Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      list: list,
-      searchKeyword: ''
+      result: null,
+      searchTerm: DEFAULT_QUERY
     };
-    _this.onDismiss = _this.onDismiss.bind(_assertThisInitialized(_this));
-    _this.onSearchInput = _this.onSearchInput.bind(_assertThisInitialized(_this));
+    _this.setSearchTopStories = _this.setSearchTopStories.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(App, [{
-    key: "onDismiss",
-    value: function onDismiss(id) {
-      var list = this.state.list;
-
-      var isNotSameId = function isNotSameId(item) {
-        return item.objectID !== id;
-      };
-
-      var updatedBookList = list.filter(isNotSameId);
-      console.log(updatedBookList); // logs the remaining book item to the console.
-
+    key: "setSearchTopStories",
+    value: function setSearchTopStories() {
       this.setState({
-        list: updatedBookList
+        result: result
       });
     }
   }, {
-    key: "onSearchInput",
-    value: function onSearchInput(e) {
-      this.setState({
-        searchKeyword: e.target.value
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var searchTerm = this.state.searchTerm;
+      fetch("".concat(API_URL).concat(searchTerm)).then(function (response) {
+        response.json();
+      }).then(function (result) {
+        console.log(result); // setSearchTopStories(result)
+      }).catch(function (error) {
+        return error;
       });
     }
   }, {
     key: "render",
     value: function render() {
-      var _this$state = this.state,
-          list = _this$state.list,
-          searchKeyword = _this$state.searchKeyword;
-      return /*#__PURE__*/_react.default.createElement("div", {
-        className: "base"
-      }, /*#__PURE__*/_react.default.createElement("h1", null, "Hey there! \uD83D\uDE09 "), /*#__PURE__*/_react.default.createElement(Search, {
-        value: searchKeyword,
-        onChange: this.onSearchInput
-      }), /*#__PURE__*/_react.default.createElement(Table, {
-        list: list,
-        pattern: searchKeyword,
-        onDismiss: this.onDismiss
-      }));
+      return /*#__PURE__*/_react.default.createElement("div", null);
     }
   }]);
 
   return App;
-}(_react.Component);
+}(_react.default.Component);
 
 exports.default = App;
-
-var Search = /*#__PURE__*/function (_React$Component) {
-  _inherits(Search, _React$Component);
-
-  var _super2 = _createSuper(Search);
-
-  function Search() {
-    _classCallCheck(this, Search);
-
-    return _super2.apply(this, arguments);
-  }
-
-  _createClass(Search, [{
-    key: "render",
-    value: function render() {
-      var _this$props = this.props,
-          value = _this$props.value,
-          onChange = _this$props.onChange;
-      return /*#__PURE__*/_react.default.createElement("form", null, /*#__PURE__*/_react.default.createElement("input", {
-        type: "text",
-        name: "book",
-        value: value,
-        onChange: onChange
-      }));
-    }
-  }]);
-
-  return Search;
-}(_react.default.Component); // table component showing list of books.
-
-
-var Table = /*#__PURE__*/function (_React$Component2) {
-  _inherits(Table, _React$Component2);
-
-  var _super3 = _createSuper(Table);
-
-  function Table() {
-    _classCallCheck(this, Table);
-
-    return _super3.apply(this, arguments);
-  }
-
-  _createClass(Table, [{
-    key: "render",
-    value: function render() {
-      var _this$props2 = this.props,
-          list = _this$props2.list,
-          pattern = _this$props2.pattern,
-          onDismiss = _this$props2.onDismiss;
-      return /*#__PURE__*/_react.default.createElement("div", null, list.filter(searchedBook(pattern)).map(function (item) {
-        // defining the delete event,
-        // so it lives inside of the mapped item block
-        var handleDismiss = function handleDismiss() {
-          onDismiss(item.objectID);
-        };
-
-        return /*#__PURE__*/_react.default.createElement("div", {
-          key: item.objectID
-        }, /*#__PURE__*/_react.default.createElement("hr", null), /*#__PURE__*/_react.default.createElement("span", null, "Book title: ", /*#__PURE__*/_react.default.createElement("a", {
-          href: item.url
-        }, item.title)), /*#__PURE__*/_react.default.createElement("p", null, "Author: ", item.author), /*#__PURE__*/_react.default.createElement("p", null, "Number of comments: ", item.num_comments), /*#__PURE__*/_react.default.createElement("p", null, "Numer of points: ", item.points), /*#__PURE__*/_react.default.createElement("button", {
-          onClick: handleDismiss
-        }, "Dismiss"), /*#__PURE__*/_react.default.createElement("hr", null));
-      }));
-    }
-  }]);
-
-  return Table;
-}(_react.default.Component);
 },{"react":"../node_modules/react/index.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
@@ -28518,7 +28413,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44355" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "42529" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
