@@ -1,4 +1,7 @@
 import React from 'react'
+import Table from './Table'
+import LoginControl from './LoginControl'
+
 
 const DEFAULT_QUERY = 'redux'
 
@@ -24,21 +27,26 @@ export default class App extends React.Component {
     })
   }
 
-  componentDidMount() {
-    const { searchTerm } = this.state
+  // componentDidMount() {
+  //   const { searchTerm } = this.state
 
-    fetch(`${API_URL}${searchTerm}`)
-      .then((response) => {
-        response.json()
-      })
-      .then((result) => {
-        console.log(result)
-        // setSearchTopStories(result)
-      })
-      .catch((error) => error)
-  }
+  //   fetch(`${API_URL}${searchTerm}`)
+  //     .then((response) => {
+  //       response.json()
+  //     })
+  //     .then((result) => {
+  //       console.log(result)
+  //       // setSearchTopStories(result)
+  //     })
+  //     .catch((error) => error)
+  // }
 
   render() {
-    return <div></div>
+    return (
+      <div>
+        <Table isLoggedIn={false}/>
+        <LoginControl />
+      </div>
+    )
   }
 }

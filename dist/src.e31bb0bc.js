@@ -28285,7 +28285,37 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":"../node_modules/react-dom/cjs/react-dom.development.js"}],"components/App.js":[function(require,module,exports) {
+},{"./cjs/react-dom.development.js":"../node_modules/react-dom/cjs/react-dom.development.js"}],"components/Table.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = Greeting;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// conditional rendering of components
+function UserGreeting(props) {
+  return /*#__PURE__*/_react.default.createElement("h1", null, "Welcome back!");
+}
+
+function GuestGreeting(props) {
+  return /*#__PURE__*/_react.default.createElement("h1", null, "Please sign up");
+}
+
+function Greeting(props) {
+  var isLoggedIn = props.isLoggedIn;
+
+  if (isLoggedIn) {
+    return /*#__PURE__*/_react.default.createElement(UserGreeting, null);
+  }
+
+  return /*#__PURE__*/_react.default.createElement(GuestGreeting, null);
+}
+},{"react":"../node_modules/react/index.js"}],"components/App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28294,6 +28324,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
+
+var _Table = _interopRequireDefault(require("./Table"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28349,23 +28381,25 @@ var App = /*#__PURE__*/function (_React$Component) {
       this.setState({
         result: result
       });
-    }
-  }, {
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var searchTerm = this.state.searchTerm;
-      fetch("".concat(API_URL).concat(searchTerm)).then(function (response) {
-        response.json();
-      }).then(function (result) {
-        console.log(result); // setSearchTopStories(result)
-      }).catch(function (error) {
-        return error;
-      });
-    }
+    } // componentDidMount() {
+    //   const { searchTerm } = this.state
+    //   fetch(`${API_URL}${searchTerm}`)
+    //     .then((response) => {
+    //       response.json()
+    //     })
+    //     .then((result) => {
+    //       console.log(result)
+    //       // setSearchTopStories(result)
+    //     })
+    //     .catch((error) => error)
+    // }
+
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/_react.default.createElement("div", null);
+      return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Table.default, {
+        isLoggedIn: false
+      }));
     }
   }]);
 
@@ -28373,7 +28407,7 @@ var App = /*#__PURE__*/function (_React$Component) {
 }(_react.default.Component);
 
 exports.default = App;
-},{"react":"../node_modules/react/index.js"}],"index.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./Table":"components/Table.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -28413,7 +28447,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "42529" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "43925" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
