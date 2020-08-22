@@ -1,6 +1,22 @@
 import React from 'react'
-import { LogoutButton, LoginButton } from './Buttons'
 import { Greeting } from './Table'
+
+
+function LoginButton(props) {
+    return (
+        <button onClick={props.onClick}>
+            Login
+        </button>
+    )
+}
+
+function LogoutButton(props) {
+    return (
+        <button onClick={props.onClick}>
+            Logout
+        </button>
+    )
+}
 
 export default class LoginControl extends React.Component {
     constructor(props) {
@@ -36,7 +52,7 @@ export default class LoginControl extends React.Component {
         const onLogin = this.onLoginClick
         const onLogout = this.onLogoutClick
 
-        const isLoggedIn = isLoggedIn 
+     
         let button;
 
         // conditional rendering logic
@@ -47,7 +63,7 @@ export default class LoginControl extends React.Component {
         }
         return (
             <div>
-                <Greeting isLoggedIn={issLoggedIn} />
+                <Greeting isLoggedIn={isLoggedIn} />
                 {button}
             </div>
         )
