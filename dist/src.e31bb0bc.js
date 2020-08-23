@@ -28466,7 +28466,32 @@ var LoginControl = /*#__PURE__*/function (_React$Component) {
 }(_react.default.Component);
 
 exports.default = LoginControl;
-},{"react":"../node_modules/react/index.js","./Buttons":"components/Buttons.js","./Greetings":"components/Greetings.js"}],"components/App.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./Buttons":"components/Buttons.js","./Greetings":"components/Greetings.js"}],"assets/data.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.messages = exports.list = void 0;
+var list = [{
+  title: 'React',
+  url: 'https://facebook.github.io/react/',
+  author: 'Jordan Walke',
+  num_comments: 3,
+  points: 4,
+  objectID: 0
+}, {
+  title: 'Redux',
+  url: 'https://github.com/reactjs/redux',
+  author: 'Dan Abramov, Andrew Clark',
+  num_comments: 2,
+  points: 5,
+  objectID: 1
+}];
+exports.list = list;
+var messages = ['React', 'Re: React', 'Re:Re: React', 'Babalawo', 'Awo Jesu', 'Lion of the tribe of judah', 'blah blah', 'Orisabunmi', 'more blah blah blah', 'No one knows tomorrow, Asa'];
+exports.messages = messages;
+},{}],"components/App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28480,21 +28505,19 @@ var _Mailbox = _interopRequireDefault(require("./Mailbox"));
 
 var _LoginControl = _interopRequireDefault(require("./LoginControl"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _data = require("../assets/data");
 
-// stateful class component
-// to capture button's click state
-var messages = ['React', 'Re: React', 'Re:Re: React', 'Babalawo', 'Awo Jesu', 'Lion of the tribe of judah', 'blah blah', 'Orisabunmi', 'more blah blah blah', 'No one knows tomorrow, Asa'];
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var App = function App() {
   return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, "Hey there"), /*#__PURE__*/_react.default.createElement(_LoginControl.default, null), /*#__PURE__*/_react.default.createElement(_Mailbox.default, {
-    unreadMessages: messages
+    unreadMessages: _data.messages
   }));
 };
 
 var _default = App;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./Mailbox":"components/Mailbox.js","./LoginControl":"components/LoginControl.js"}],"index.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./Mailbox":"components/Mailbox.js","./LoginControl":"components/LoginControl.js","../assets/data":"assets/data.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));

@@ -1,4 +1,4 @@
-const list = [
+export const list = [
   {
     title: 'React',
     url: 'https://facebook.github.io/react/',
@@ -17,7 +17,7 @@ const list = [
   },
 ]
 
-const messages = [
+export const messages = [
   'React',
   'Re: React',
   'Re:Re: React',

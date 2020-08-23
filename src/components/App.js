@@ -1,24 +1,7 @@
 import React from 'react'
 import Mailbox from './Mailbox'
 import LoginControl from './LoginControl'
-
-
-// stateful class component
-// to capture button's click state
-
-
-const messages = [
-  'React',
-  'Re: React',
-  'Re:Re: React',
-  'Babalawo',
-  'Awo Jesu',
-  'Lion of the tribe of judah',
-  'blah blah',
-  'Orisabunmi',
-  'more blah blah blah',
-  'No one knows tomorrow, Asa',
-]
+import { messages } from '../assets/data'
 
 const App = () => {
   return (
