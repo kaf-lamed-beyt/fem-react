@@ -16,3 +16,16 @@ const list = [
     objectID: 1,
   },
 ]
+
+const messages = [
+  'React',
+  'Re: React',
+  'Re:Re: React',
+  'Babalawo',
+  'Awo Jesu',
+  'Lion of the tribe of judah',
+  'blah blah',
+  'Orisabunmi',
+  'more blah blah blah',
+  'No one knows tomorrow, Asa',
+]

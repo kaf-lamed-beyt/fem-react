@@ -28304,7 +28304,34 @@ var Mailbox = function Mailbox(props) {
 
 var _default = Mailbox;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js"}],"components/App.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js"}],"components/Buttons.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.LogoutButton = exports.LoginButton = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var LoginButton = function LoginButton(props) {
+  return /*#__PURE__*/_react.default.createElement("button", {
+    onClick: props.onClick
+  }, "Login");
+};
+
+exports.LoginButton = LoginButton;
+
+var LogoutButton = function LogoutButton(props) {
+  return /*#__PURE__*/_react.default.createElement("button", {
+    onClick: props.onClick
+  }, "Logout");
+};
+
+exports.LogoutButton = LogoutButton;
+},{"react":"../node_modules/react/index.js"}],"components/Greetings.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28314,7 +28341,41 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _Mailbox = _interopRequireDefault(require("./Mailbox"));
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var UserGreeting = function UserGreeting(props) {
+  return /*#__PURE__*/_react.default.createElement("h1", null, "Welcome Back!");
+};
+
+var GuestGreeting = function GuestGreeting(props) {
+  return /*#__PURE__*/_react.default.createElement("h1", null, "Please sign up.");
+};
+
+var Greeting = function Greeting(props) {
+  var isLoggedIn = props.isLoggedIn;
+
+  if (isLoggedIn) {
+    return /*#__PURE__*/_react.default.createElement(UserGreeting, null);
+  }
+
+  return /*#__PURE__*/_react.default.createElement(GuestGreeting, null);
+};
+
+var _default = Greeting;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js"}],"components/LoginControl.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _Buttons = require("./Buttons");
+
+var _Greetings = _interopRequireDefault(require("./Greetings"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28339,39 +28400,6 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-var UserGreeting = function UserGreeting(props) {
-  return /*#__PURE__*/_react.default.createElement("h1", null, "Welcome Back!");
-};
-
-var GuestGreeting = function GuestGreeting(props) {
-  return /*#__PURE__*/_react.default.createElement("h1", null, "Please sign up.");
-};
-
-var Greeting = function Greeting(props) {
-  var isLoggedIn = props.isLoggedIn;
-
-  if (isLoggedIn) {
-    return /*#__PURE__*/_react.default.createElement(UserGreeting, null);
-  }
-
-  return /*#__PURE__*/_react.default.createElement(GuestGreeting, null);
-}; // button components
-
-
-var LoginButton = function LoginButton(props) {
-  return /*#__PURE__*/_react.default.createElement("button", {
-    onClick: props.onClick
-  }, "Login");
-};
-
-var LogoutButton = function LogoutButton(props) {
-  return /*#__PURE__*/_react.default.createElement("button", {
-    onClick: props.onClick
-  }, "Logout");
-}; // stateful class component
-// to capture button's click state
-
 
 var LoginControl = /*#__PURE__*/function (_React$Component) {
   _inherits(LoginControl, _React$Component);
@@ -28419,16 +28447,16 @@ var LoginControl = /*#__PURE__*/function (_React$Component) {
       var logout = this.onLogout;
 
       if (isLoggedIn) {
-        button = /*#__PURE__*/_react.default.createElement(LogoutButton, {
-          onClick: logout
+        button = /*#__PURE__*/_react.default.createElement(_Buttons.LoginButton, {
+          onClick: login
         });
       } else {
-        button = /*#__PURE__*/_react.default.createElement(LogoutButton, {
+        button = /*#__PURE__*/_react.default.createElement(_Buttons.LogoutButton, {
           onClick: logout
         });
       }
 
-      return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(Greeting, {
+      return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Greetings.default, {
         isLoggedIn: isLoggedIn
       }), /*#__PURE__*/_react.default.createElement("p", null, "The user is ", isLoggedIn ? 'currently' : 'currently not', " logged in."), button);
     }
@@ -28437,17 +28465,36 @@ var LoginControl = /*#__PURE__*/function (_React$Component) {
   return LoginControl;
 }(_react.default.Component);
 
+exports.default = LoginControl;
+},{"react":"../node_modules/react/index.js","./Buttons":"components/Buttons.js","./Greetings":"components/Greetings.js"}],"components/App.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _Mailbox = _interopRequireDefault(require("./Mailbox"));
+
+var _LoginControl = _interopRequireDefault(require("./LoginControl"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// stateful class component
+// to capture button's click state
 var messages = ['React', 'Re: React', 'Re:Re: React', 'Babalawo', 'Awo Jesu', 'Lion of the tribe of judah', 'blah blah', 'Orisabunmi', 'more blah blah blah', 'No one knows tomorrow, Asa'];
 
 var App = function App() {
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, "Hey there"), /*#__PURE__*/_react.default.createElement(LoginControl, null), /*#__PURE__*/_react.default.createElement(_Mailbox.default, {
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, "Hey there"), /*#__PURE__*/_react.default.createElement(_LoginControl.default, null), /*#__PURE__*/_react.default.createElement(_Mailbox.default, {
     unreadMessages: messages
   }));
 };
 
 var _default = App;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./Mailbox":"components/Mailbox.js"}],"index.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./Mailbox":"components/Mailbox.js","./LoginControl":"components/LoginControl.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
