@@ -28285,7 +28285,74 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":"../node_modules/react-dom/cjs/react-dom.development.js"}],"../node_modules/@babel/runtime/helpers/esm/inheritsLoose.js":[function(require,module,exports) {
+},{"./cjs/react-dom.development.js":"../node_modules/react-dom/cjs/react-dom.development.js"}],"components/App.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var App = function App() {
+  var visitor = prompt('Hey there, how are you? may I know your name?');
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, "Hello ", visitor, " welcome to my blog."), /*#__PURE__*/_react.default.createElement("div", null));
+};
+
+var _default = App;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js"}],"assets/data.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.messages = exports.list = void 0;
+var list = [{
+  title: 'React',
+  url: 'https://facebook.github.io/react/',
+  author: 'Jordan Walke',
+  num_comments: 3,
+  points: 4,
+  objectID: 0
+}, {
+  title: 'Redux',
+  url: 'https://github.com/reactjs/redux',
+  author: 'Dan Abramov, Andrew Clark',
+  num_comments: 2,
+  points: 5,
+  objectID: 1
+}];
+exports.list = list;
+var messages = ['React', 'Re: React', 'Re:Re: React', 'Babalawo', 'Awo Jesu', 'Lion of the tribe of judah', 'blah blah', 'Orisabunmi', 'more blah blah blah', 'No one knows tomorrow, Asa'];
+exports.messages = messages;
+},{}],"components/Mailbox.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _data = require("../assets/data");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Mailbox = function Mailbox(props) {
+  // const unreadMessages = props.unreadMessages
+  var unreadMessages = _data.messages;
+  var name = prompt('what is your name');
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, "Hello ", name, ", how are you? \uD83D\uDE0E "), unreadMessages.length > 0 && /*#__PURE__*/_react.default.createElement("h2", null, "You have ", unreadMessages.length, " unread messages."));
+};
+
+var _default = Mailbox;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","../assets/data":"assets/data.js"}],"../node_modules/@babel/runtime/helpers/esm/inheritsLoose.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32188,7 +32255,7 @@ if ("development" !== "production") {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.MailRouteButton = exports.LoginRouteButton = exports.LogoutButton = exports.LoginButton = void 0;
+exports.LogoutButton = exports.LoginButton = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -32208,93 +32275,24 @@ var LogoutButton = function LogoutButton(props) {
   return /*#__PURE__*/_react.default.createElement("button", {
     onClick: props.onClick
   }, "Logout");
-};
+}; // export const LoginRouteButton = () => {
+//   return (
+//     <button>
+//       <Link to="/login">Login</Link>
+//     </button>
+//   )
+// }
+// export const MailRouteButton = () => {
+//   return (
+//     <button>
+//       <Link to="/mail">Go to inbox</Link>
+//     </button>
+//   )
+// }
+
 
 exports.LogoutButton = LogoutButton;
-
-var LoginRouteButton = function LoginRouteButton() {
-  return /*#__PURE__*/_react.default.createElement("button", null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
-    to: "/login"
-  }, "Login"));
-};
-
-exports.LoginRouteButton = LoginRouteButton;
-
-var MailRouteButton = function MailRouteButton() {
-  return /*#__PURE__*/_react.default.createElement("button", null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
-    to: "/mail"
-  }, "Go to inbox"));
-};
-
-exports.MailRouteButton = MailRouteButton;
-},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js"}],"components/App.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _Buttons = require("./Buttons");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var App = function App() {
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, "Hey there"), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Buttons.LoginRouteButton, null), /*#__PURE__*/_react.default.createElement(_Buttons.MailRouteButton, null)));
-};
-
-var _default = App;
-exports.default = _default;
-},{"react":"../node_modules/react/index.js","./Buttons":"components/Buttons.js"}],"assets/data.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.messages = exports.list = void 0;
-var list = [{
-  title: 'React',
-  url: 'https://facebook.github.io/react/',
-  author: 'Jordan Walke',
-  num_comments: 3,
-  points: 4,
-  objectID: 0
-}, {
-  title: 'Redux',
-  url: 'https://github.com/reactjs/redux',
-  author: 'Dan Abramov, Andrew Clark',
-  num_comments: 2,
-  points: 5,
-  objectID: 1
-}];
-exports.list = list;
-var messages = ['React', 'Re: React', 'Re:Re: React', 'Babalawo', 'Awo Jesu', 'Lion of the tribe of judah', 'blah blah', 'Orisabunmi', 'more blah blah blah', 'No one knows tomorrow, Asa'];
-exports.messages = messages;
-},{}],"components/Mailbox.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _data = require("../assets/data");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Mailbox = function Mailbox(props) {
-  // const unreadMessages = props.unreadMessages
-  var unreadMessages = _data.messages;
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, "Hello"), unreadMessages.length > 0 && /*#__PURE__*/_react.default.createElement("h2", null, "You have ", unreadMessages.length, " unread messages."));
-};
-
-var _default = Mailbox;
-exports.default = _default;
-},{"react":"../node_modules/react/index.js","../assets/data":"assets/data.js"}],"components/Greetings.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js"}],"components/Greetings.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

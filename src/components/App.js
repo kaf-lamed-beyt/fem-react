@@ -1,15 +1,12 @@
 import React from 'react'
-import { LoginRouteButton, MailRouteButton } from './Buttons'
-
 
 const App = () => {
+  const visitor = prompt('Hey there, how are you? may I know your name?')
+
   return (
     <div>
-      <h1>Hey there</h1>
-      <div>
-        <LoginRouteButton />
-        <MailRouteButton />
-      </div>
+      <h1>Hello {visitor} welcome to my blog.</h1>
+      <div></div>
     </div>
   )
 }

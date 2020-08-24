@@ -5,9 +5,11 @@ const Mailbox = (props) => {
   // const unreadMessages = props.unreadMessages
   const unreadMessages = messages
 
+  const name = prompt('what is your name')
+
   return (
     <div>
-      <h1>Hello</h1>
+      <h1>Hello {name}, how are you? 😎 </h1>
       {unreadMessages.length > 0 && (
         <h2>You have {unreadMessages.length} unread messages.</h2>
       )}
