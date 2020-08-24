@@ -1,3 +1,5 @@
+@import './variables';
+
 * {
     margin: 0;
     padding: 0;
@@ -5,5 +7,33 @@
 }
 
 body {
-    background: #555555;
+    background: $ghostwhite;
+}
+
+.app__base {
+    margin-top: 20%;
+
+    h1 {
+        text-align: center;
+        animation: zoom 1s 1s ease-in,
+                   slide 1s ease-in;
+    }
+
+    @keyframes zoom {
+        0% {
+            transform: scale(1);
+        } 50% {
+            transform: scale(1.2);
+        } 100% {
+            transform: scale(1);
+        }
+    }
+
+    @keyframes slide {
+        from {
+            transform: translateX(-1100px);
+        } to {
+            transform: translateX(50px);
+        }
+    }
 }

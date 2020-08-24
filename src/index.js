@@ -4,6 +4,7 @@ import App from './components/App'
 import Mailbox from './components/Mailbox'
 import LoginControl from './components/LoginControl'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import './scss/app.scss'
 
 ReactDOM.render(
   <Router>

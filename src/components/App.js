@@ -4,9 +4,11 @@ const App = () => {
   const visitor = prompt('Hey there, how are you? may I know your name?')
 
   return (
-    <div>
-      <h1>Hello {visitor} welcome to my blog.</h1>
-      <div></div>
+    <div className="app__base">
+      <h1>
+        Hello {visitor ? `${visitor}  😎 ` : 'stranger   😬  🤬 '}, welcome to
+        this space.
+      </h1>
     </div>
   )
 }
