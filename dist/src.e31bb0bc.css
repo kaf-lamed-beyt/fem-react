@@ -10,7 +10,8 @@ body {
   margin-top: 20%; }
   .app__base h1 {
     text-align: center;
-    animation: zoom 1s 1s ease-in, slide 1s ease-in; }
+    animation: zoom 1s 1s ease-in, slide 1s ease-in;
+    font-size: 40px; }
 
 @keyframes zoom {
   0% {

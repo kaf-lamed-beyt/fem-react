@@ -28298,7 +28298,7 @@ var _react = _interopRequireDefault(require("react"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var App = function App() {
-  var visitor = prompt('Hey there, how are you? may I know your name?');
+  var visitor = prompt('Hey there, may I know your name?');
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "app__base"
   }, /*#__PURE__*/_react.default.createElement("h1", null, "Hello ", visitor ? "".concat(visitor, "  \uD83D\uDE0E ") : 'stranger   😬  🤬 ', ", welcome to this space."));
