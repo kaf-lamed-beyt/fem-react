@@ -28353,7 +28353,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var App = function App() {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "app__base"
-  }, /*#__PURE__*/_react.default.createElement(_Search.default, null), _data.list);
+  }, /*#__PURE__*/_react.default.createElement(_Search.default, null), _data.list.map(function (item) {
+    return /*#__PURE__*/_react.default.createElement("div", {
+      key: item.objectID
+    }, /*#__PURE__*/_react.default.createElement("h1", null, "Title: ", item.title), /*#__PURE__*/_react.default.createElement("p", null, "popularity: ", item.points, " "));
+  }));
 };
 
 var _default = App;

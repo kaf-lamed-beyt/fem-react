@@ -6,7 +6,14 @@ const App = () => {
   return (
     <div className="app__base">
       <Search />
-      {list}
+    {list.map(item => {
+      return (
+        <div key={item.objectID}>
+          <h1>Title: {item.title}</h1>
+          <p>popularity: {item.points} </p>
+        </div>
+      )
+    })}
     </div>
   )
 }
