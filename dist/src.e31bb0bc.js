@@ -28285,7 +28285,7 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":"../node_modules/react-dom/cjs/react-dom.development.js"}],"components/App.js":[function(require,module,exports) {
+},{"./cjs/react-dom.development.js":"../node_modules/react-dom/cjs/react-dom.development.js"}],"components/Search.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28297,14 +28297,17 @@ var _react = _interopRequireDefault(require("react"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var App = function App() {
-  var visitor = prompt('Hey there, may I know your name?');
+var Search = function Search(props) {
   return /*#__PURE__*/_react.default.createElement("div", {
-    className: "app__base"
-  }, /*#__PURE__*/_react.default.createElement("h1", null, "Hello ", visitor ? "".concat(visitor, "  \uD83D\uDE0E ") : 'stranger   😬  🤬 ', ", welcome to this space."));
+    className: "search__base"
+  }, /*#__PURE__*/_react.default.createElement("input", {
+    type: props.type,
+    id: props.id,
+    name: props.name
+  }));
 };
 
-var _default = App;
+var _default = Search;
 exports.default = _default;
 },{"react":"../node_modules/react/index.js"}],"assets/data.js":[function(require,module,exports) {
 "use strict";
@@ -28331,7 +28334,31 @@ var list = [{
 exports.list = list;
 var messages = ['React', 'Re: React', 'Re:Re: React', 'Babalawo', 'Awo Jesu', 'Lion of the tribe of judah', 'blah blah', 'Orisabunmi', 'more blah blah blah', 'No one knows tomorrow, Asa'];
 exports.messages = messages;
-},{}],"components/Mailbox.js":[function(require,module,exports) {
+},{}],"components/App.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _Search = _interopRequireDefault(require("./Search"));
+
+var _data = require("../assets/data");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var App = function App() {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "app__base"
+  }, /*#__PURE__*/_react.default.createElement(_Search.default, null), _data.list);
+};
+
+var _default = App;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","./Search":"components/Search.js","../assets/data":"assets/data.js"}],"components/Mailbox.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32558,7 +32585,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "43849" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "37265" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

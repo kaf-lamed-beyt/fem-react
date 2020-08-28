@@ -1,14 +1,12 @@
 import React from 'react'
+import Search from './Search'
+import { list } from '../assets/data'
 
 const App = () => {
-  const visitor = prompt('Hey there, may I know your name?')
-
   return (
     <div className="app__base">
-      <h1>
-        Hello {visitor ? `${visitor}  😎 ` : 'stranger   😬  🤬 '}, welcome to
-        this space.
-      </h1>
+      <Search />
+      {list}
     </div>
   )
 }
