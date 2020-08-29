@@ -28317,9 +28317,9 @@ var Search = function Search(props) {
       search = _useState2[0],
       setSearch = _useState2[1];
 
-  var handleSearch = function handleSearch(e) {
-    console.log(e);
-    setSearch(e.target.value);
+  var handleSearch = function handleSearch(event) {
+    // console.log(event.target)
+    setSearch(event.target.value);
   };
 
   return /*#__PURE__*/_react.default.createElement("div", {
@@ -28360,7 +28360,33 @@ var list = [{
 exports.list = list;
 var messages = ['React', 'Re: React', 'Re:Re: React', 'Babalawo', 'Awo Jesu', 'Lion of the tribe of judah', 'blah blah', 'Orisabunmi', 'more blah blah blah', 'No one knows tomorrow, Asa'];
 exports.messages = messages;
-},{}],"components/App.js":[function(require,module,exports) {
+},{}],"components/List.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _data = require("../assets/data");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var List = function List() {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "list__base"
+  }, _data.list.map(function (item) {
+    return /*#__PURE__*/_react.default.createElement("div", {
+      key: item.objectID
+    }, /*#__PURE__*/_react.default.createElement("h2", null, item.title), /*#__PURE__*/_react.default.createElement("p", null, item.author));
+  }));
+};
+
+var _default = List;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","../assets/data":"assets/data.js"}],"components/App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28372,7 +28398,7 @@ var _react = _interopRequireDefault(require("react"));
 
 var _Search = _interopRequireDefault(require("./Search"));
 
-var _data = require("../assets/data");
+var _List = _interopRequireDefault(require("./List"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28380,18 +28406,15 @@ var App = function App() {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "app__base"
   }, /*#__PURE__*/_react.default.createElement(_Search.default, {
+    type: "text",
     id: "search",
     name: "search"
-  }), _data.list.map(function (item) {
-    return /*#__PURE__*/_react.default.createElement("div", {
-      key: item.objectID
-    }, /*#__PURE__*/_react.default.createElement("h2", null, "Title: ", item.title), /*#__PURE__*/_react.default.createElement("p", null, "popularity: ", item.points, " "));
-  }));
+  }), /*#__PURE__*/_react.default.createElement("hr", null), /*#__PURE__*/_react.default.createElement(_List.default, null));
 };
 
 var _default = App;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./Search":"components/Search.js","../assets/data":"assets/data.js"}],"components/Mailbox.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./Search":"components/Search.js","./List":"components/List.js"}],"components/Mailbox.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32618,7 +32641,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "34127" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "37381" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

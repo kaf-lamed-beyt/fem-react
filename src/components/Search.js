@@ -3,10 +3,10 @@ import React, { useState } from 'react'
 const Search = (props) => {
   const [search, setSearch] = useState('')
 
-  const handleSearch = (e) => {
-    console.log(e)
+  const handleSearch = (event) => {
+    // console.log(event.target)
 
-    setSearch(e.target.value)
+    setSearch(event.target.value)
   }
 
   return (
