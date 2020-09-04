@@ -1,7 +1,6 @@
 import React from 'react'
 
-const Search = (props) => {
-
+const Search = props => {
   return (
     <div className="search__base">
       <input
@@ -11,7 +10,9 @@ const Search = (props) => {
         onChange={props.onSearch}
         value={props.keyword}
       />
-      <p>searching for <strong>{props.keyword}</strong></p>
+      <p>
+        searching for <strong>{props.keyword}</strong>
+      </p>
     </div>
   )
 }

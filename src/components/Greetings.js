@@ -1,14 +1,14 @@
 import React from 'react'
 
-const UserGreeting = (props) => {
+const UserGreeting = props => {
   return <h1>Welcome Back!</h1>
 }
 
-const GuestGreeting = (props) => {
+const GuestGreeting = props => {
   return <h1>Please sign up.</h1>
 }
 
-const Greeting = (props) => {
+const Greeting = props => {
   const isLoggedIn = props.isLoggedIn
 
   if (isLoggedIn) {

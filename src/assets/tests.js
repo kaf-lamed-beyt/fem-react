@@ -1,4 +1,3 @@
-
 function getAlphabet() {
   return ['a', 'b']
 }

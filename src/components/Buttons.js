@@ -1,11 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export const LoginButton = (props) => {
+export const LoginButton = props => {
   return <button onClick={props.onClick}>Login</button>
 }
 
-export const LogoutButton = (props) => {
+export const LogoutButton = props => {
   return <button onClick={props.onClick}>Logout</button>
 }
 

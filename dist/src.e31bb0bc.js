@@ -28397,20 +28397,20 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var App = function App() {
   var stories = _data.list;
 
-  var _useState = (0, _react.useState)(''),
+  var _useState = (0, _react.useState)('React'),
       _useState2 = _slicedToArray(_useState, 2),
       searchTerm = _useState2[0],
       setSearchTerm = _useState2[1];
 
   var handleSearch = function handleSearch(event) {
     setSearchTerm(event.target.value);
-  }; // pass a filter handler that filters 
-  // the search keyword before rendering the 
+  }; // pass a filter handler that filters
+  // the search keyword before rendering the
   // list in the app component
 
 
   var searchedStories = stories.filter(function (story) {
-    return story.title.toLowerCase().includes(searchTerm);
+    return story.title.toLowerCase().includes(searchTerm.toLocaleLowerCase());
   });
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "app__base"
