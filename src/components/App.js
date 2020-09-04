@@ -12,7 +12,7 @@ const App = () => {
     setSearchTerm(event.target.value)
   }
 
-  // pass a filter handler that filters
+  // pass an handler that filters
   // the search keyword before rendering the
   // list in the app component
 
