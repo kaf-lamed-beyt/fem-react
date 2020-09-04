@@ -1,7 +1,7 @@
 import React from 'react'
 import { messages } from '../assets/data'
 
-const Mailbox = (props) => {
+const Mailbox = () => {
   // const unreadMessages = props.unreadMessages
   const unreadMessages = messages
 

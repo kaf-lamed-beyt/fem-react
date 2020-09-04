@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 
 const Search = (props) => {
-  const [search, setSearch] = useState('')
+  const [searchTerm, setSearchTerm] = useState('')
 
-  const handleSearch = (event) => {
-    // console.log(event.target)
+  const handleChange = (event) => {
+    setSearchTerm(event.target.value)
 
-    setSearch(event.target.value)
+    props.onSearch(event)
   }
 
   return (
@@ -15,9 +15,10 @@ const Search = (props) => {
         type={props.type}
         id={props.id}
         name={props.name}
-        onChange={handleSearch}
-        value={search}
+        onChange={handleChange}
+        value={searchTerm}
       />
+      <p>searching for <strong>{searchTerm}</strong></p>
     </div>
   )
 }

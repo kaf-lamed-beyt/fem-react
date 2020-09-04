@@ -6,12 +6,10 @@
 body {
   background: ghostwhite; }
 
-.app__base {
-  margin-top: 20%; }
-  .app__base h1 {
-    text-align: center;
-    animation: zoom 1s 1s ease-in, slide 1s ease-in;
-    font-size: 40px; }
+.app__base h1 {
+  text-align: center;
+  animation: zoom 1s 1s ease-in, slide 1s ease-in;
+  font-size: 40px; }
 
 @keyframes zoom {
   0% {
@@ -26,6 +24,13 @@ body {
     transform: translateX(-1100px); }
   to {
     transform: translateX(50px); } }
+
+.search__base {
+  text-align: center;
+  padding-top: 20px; }
+  .search__base input {
+    width: 200px;
+    height: 25px; }
 
 
 /*# sourceMappingURL=/src.e31bb0bc.css.map */

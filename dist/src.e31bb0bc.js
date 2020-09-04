@@ -28314,12 +28314,12 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var Search = function Search(props) {
   var _useState = (0, _react.useState)(''),
       _useState2 = _slicedToArray(_useState, 2),
-      search = _useState2[0],
-      setSearch = _useState2[1];
+      searchTerm = _useState2[0],
+      setSearchTerm = _useState2[1];
 
-  var handleSearch = function handleSearch(event) {
-    // console.log(event.target)
-    setSearch(event.target.value);
+  var handleChange = function handleChange(event) {
+    setSearchTerm(event.target.value);
+    props.onSearch(event);
   };
 
   return /*#__PURE__*/_react.default.createElement("div", {
@@ -28328,12 +28328,36 @@ var Search = function Search(props) {
     type: props.type,
     id: props.id,
     name: props.name,
-    onChange: handleSearch,
-    value: search
-  }));
+    onChange: handleChange,
+    value: searchTerm
+  }), /*#__PURE__*/_react.default.createElement("p", null, "searching for ", /*#__PURE__*/_react.default.createElement("strong", null, searchTerm)));
 };
 
 var _default = Search;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js"}],"components/List.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var List = function List(props) {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "list__base"
+  }, props.list.map(function (item) {
+    return /*#__PURE__*/_react.default.createElement("div", {
+      key: item.objectID
+    }, /*#__PURE__*/_react.default.createElement("h2", null, item.title), /*#__PURE__*/_react.default.createElement("p", null, item.author));
+  }));
+};
+
+var _default = List;
 exports.default = _default;
 },{"react":"../node_modules/react/index.js"}],"assets/data.js":[function(require,module,exports) {
 "use strict";
@@ -28360,33 +28384,7 @@ var list = [{
 exports.list = list;
 var messages = ['React', 'Re: React', 'Re:Re: React', 'Babalawo', 'Awo Jesu', 'Lion of the tribe of judah', 'blah blah', 'Orisabunmi', 'more blah blah blah', 'No one knows tomorrow, Asa'];
 exports.messages = messages;
-},{}],"components/List.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _data = require("../assets/data");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var List = function List() {
-  return /*#__PURE__*/_react.default.createElement("div", {
-    className: "list__base"
-  }, _data.list.map(function (item) {
-    return /*#__PURE__*/_react.default.createElement("div", {
-      key: item.objectID
-    }, /*#__PURE__*/_react.default.createElement("h2", null, item.title), /*#__PURE__*/_react.default.createElement("p", null, item.author));
-  }));
-};
-
-var _default = List;
-exports.default = _default;
-},{"react":"../node_modules/react/index.js","../assets/data":"assets/data.js"}],"components/App.js":[function(require,module,exports) {
+},{}],"components/App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28400,21 +28398,29 @@ var _Search = _interopRequireDefault(require("./Search"));
 
 var _List = _interopRequireDefault(require("./List"));
 
+var _data = require("../assets/data");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var App = function App() {
+  var stories = _data.list;
+
+  var handleSearch = function handleSearch(event) {
+    console.log(event.target.value);
+  };
+
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "app__base"
-  }, /*#__PURE__*/_react.default.createElement(_Search.default, {
-    type: "text",
-    id: "search",
-    name: "search"
-  }), /*#__PURE__*/_react.default.createElement("hr", null), /*#__PURE__*/_react.default.createElement(_List.default, null));
+  }, /*#__PURE__*/_react.default.createElement("h1", null, "Our hacker stories"), /*#__PURE__*/_react.default.createElement(_Search.default, {
+    onSearch: handleSearch
+  }), /*#__PURE__*/_react.default.createElement("hr", null), /*#__PURE__*/_react.default.createElement(_List.default, {
+    list: stories
+  }));
 };
 
 var _default = App;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./Search":"components/Search.js","./List":"components/List.js"}],"components/Mailbox.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./Search":"components/Search.js","./List":"components/List.js","../assets/data":"assets/data.js"}],"components/Mailbox.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28428,7 +28434,7 @@ var _data = require("../assets/data");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Mailbox = function Mailbox(props) {
+var Mailbox = function Mailbox() {
   // const unreadMessages = props.unreadMessages
   var unreadMessages = _data.messages;
   var name = prompt('what is your name');
@@ -32641,7 +32647,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "37381" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "42523" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

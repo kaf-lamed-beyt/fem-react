@@ -1,15 +1,8 @@
-function addItem(item) {
-  let itemsBox = []
-  itemsBox.push(item)
 
-  return itemsBox
+function getAlphabet() {
+  return ['a', 'b']
 }
 
-console.log(addItem('1, 2'))
+const [firstItem, secondItem] = getAlphabet()
 
-function deleteItem(item) {
-  let wasteBin = []
-  wasteBin.pop(item)
-
-  return wasteBin
-}
+console.log(firstItem)

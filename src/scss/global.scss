@@ -11,8 +11,6 @@ body {
 }
 
 .app__base {
-    margin-top: 20%;
-
     h1 {
         text-align: center;
         animation: zoom 1s 1s ease-in,
@@ -36,5 +34,16 @@ body {
         } to {
             transform: translateX(50px);
         }
+    }
+}
+
+
+.search__base {
+    text-align: center;
+    padding-top: 20px;
+
+    input {
+        width: 200px;
+        height: 25px;
     }
 }

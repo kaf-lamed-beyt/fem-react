@@ -1,10 +1,9 @@
 import React from 'react'
-import { list } from '../assets/data'
 
-const List = () => {
+const List = (props) => {
   return (
     <div className="list__base">
-      {list.map((item) => {
+      {props.list.map((item) => {
         return (
           <div key={item.objectID}>
             <h2>{item.title}</h2>
