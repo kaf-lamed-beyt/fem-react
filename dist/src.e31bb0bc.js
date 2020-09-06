@@ -28326,22 +28326,22 @@ var _react = _interopRequireDefault(require("react"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
 var List = function List(_ref) {
   var list = _ref.list;
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "list__base"
   }, list.map(function (item) {
-    return /*#__PURE__*/_react.default.createElement(Item, {
-      key: item.objectID,
-      item: item
-    });
+    return /*#__PURE__*/_react.default.createElement(Item, _extends({
+      key: item.objectID
+    }, item));
   }));
 };
 
 var Item = function Item(_ref2) {
-  var _ref2$item = _ref2.item,
-      title = _ref2$item.title,
-      author = _ref2$item.author;
+  var title = _ref2.title,
+      author = _ref2.author;
   return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h2", null, title), /*#__PURE__*/_react.default.createElement("p", null, author));
 };
 
