@@ -6,7 +6,7 @@ import { list } from '../assets/data'
 const App = () => {
   const stories = list
 
-  const [searchTerm, setSearchTerm] = useState('React')
+  const [searchTerm, setSearchTerm] = useState("")
 
   const handleSearch = event => {
     setSearchTerm(event.target.value)

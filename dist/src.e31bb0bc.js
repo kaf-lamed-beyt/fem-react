@@ -28297,16 +28297,19 @@ var _react = _interopRequireDefault(require("react"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Search = function Search(props) {
+var Search = function Search(_ref) {
+  var keyword = _ref.keyword,
+      onSearch = _ref.onSearch;
+  // destructuring props to handle data
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "search__base"
   }, /*#__PURE__*/_react.default.createElement("input", {
     type: "text",
     id: "search",
     name: "search",
-    onChange: props.onSearch,
-    value: props.keyword
-  }), /*#__PURE__*/_react.default.createElement("p", null, "searching for ", /*#__PURE__*/_react.default.createElement("strong", null, props.keyword)));
+    onChange: onSearch,
+    value: keyword
+  }), /*#__PURE__*/_react.default.createElement("p", null, "searching for ", /*#__PURE__*/_react.default.createElement("strong", null, keyword)));
 };
 
 var _default = Search;
@@ -28323,10 +28326,11 @@ var _react = _interopRequireDefault(require("react"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var List = function List(props) {
+var List = function List(_ref) {
+  var list = _ref.list;
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "list__base"
-  }, props.list.map(function (item) {
+  }, list.map(function (item) {
     return /*#__PURE__*/_react.default.createElement("div", {
       key: item.objectID
     }, /*#__PURE__*/_react.default.createElement("h2", null, item.title), /*#__PURE__*/_react.default.createElement("p", null, item.author));
@@ -28397,14 +28401,14 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var App = function App() {
   var stories = _data.list;
 
-  var _useState = (0, _react.useState)('React'),
+  var _useState = (0, _react.useState)(""),
       _useState2 = _slicedToArray(_useState, 2),
       searchTerm = _useState2[0],
       setSearchTerm = _useState2[1];
 
   var handleSearch = function handleSearch(event) {
     setSearchTerm(event.target.value);
-  }; // pass a filter handler that filters
+  }; // pass an handler that filters
   // the search keyword before rendering the
   // list in the app component
 
@@ -32651,7 +32655,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "42523" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "45775" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

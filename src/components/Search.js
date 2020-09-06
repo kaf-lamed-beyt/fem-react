@@ -1,17 +1,18 @@
 import React from 'react'
 
-const Search = props => {
+const Search = ({ keyword, onSearch }) => {
+  // destructuring props to handle data
   return (
     <div className="search__base">
       <input
         type="text"
         id="search"
         name="search"
-        onChange={props.onSearch}
-        value={props.keyword}
+        onChange={onSearch}
+        value={keyword}
       />
       <p>
-        searching for <strong>{props.keyword}</strong>
+        searching for <strong>{keyword}</strong>
       </p>
     </div>
   )
