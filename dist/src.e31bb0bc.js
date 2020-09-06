@@ -28331,10 +28331,18 @@ var List = function List(_ref) {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "list__base"
   }, list.map(function (item) {
-    return /*#__PURE__*/_react.default.createElement("div", {
-      key: item.objectID
-    }, /*#__PURE__*/_react.default.createElement("h2", null, item.title), /*#__PURE__*/_react.default.createElement("p", null, item.author));
+    return /*#__PURE__*/_react.default.createElement(Item, {
+      key: item.objectID,
+      item: item
+    });
   }));
+};
+
+var Item = function Item(_ref2) {
+  var _ref2$item = _ref2.item,
+      title = _ref2$item.title,
+      author = _ref2$item.author;
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h2", null, title), /*#__PURE__*/_react.default.createElement("p", null, author));
 };
 
 var _default = List;
@@ -28401,7 +28409,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var App = function App() {
   var stories = _data.list;
 
-  var _useState = (0, _react.useState)(""),
+  var _useState = (0, _react.useState)(''),
       _useState2 = _slicedToArray(_useState, 2),
       searchTerm = _useState2[0],
       setSearchTerm = _useState2[1];

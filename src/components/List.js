@@ -4,13 +4,17 @@ const List = ({ list }) => {
   return (
     <div className="list__base">
       {list.map(item => {
-        return (
-          <div key={item.objectID}>
-            <h2>{item.title}</h2>
-            <p>{item.author}</p>
-          </div>
-        )
+        return <Item key={item.objectID} item={item} />
       })}
+    </div>
+  )
+}
+
+const Item = ({ item: { title, author } }) => {
+  return (
+    <div>
+      <h2>{title}</h2>
+      <p>{author}</p>
     </div>
   )
 }
