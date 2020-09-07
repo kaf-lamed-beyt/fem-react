@@ -28326,18 +28326,20 @@ var _react = _interopRequireDefault(require("react"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
 var List = function List(_ref) {
   var list = _ref.list;
-  return /*#__PURE__*/_react.default.createElement("div", {
-    className: "list__base"
-  }, list.map(function (item) {
-    return /*#__PURE__*/_react.default.createElement(Item, _extends({
-      key: item.objectID
-    }, item));
-  }));
-};
+  r;
+}; //----- second approach ----//
+// const List = ({ list }) => {
+//   return (
+//     <div className="list__base">
+//       {list.map(item => {
+//         return <Item key={item.objectID} {...item} />
+//       })}
+//     </div>
+//   )
+// }
+
 
 var Item = function Item(_ref2) {
   var title = _ref2.title,

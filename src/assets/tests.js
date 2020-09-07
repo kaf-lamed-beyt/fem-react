@@ -29,3 +29,17 @@ const user = {
 
 console.log(user)
 
+// Rest parameter
+
+const _user = {
+  id: 1,
+  firstname: 'Caleb',
+  lastname: 'Olojo',
+  username: 'Seven',
+  country: 'Nigeria',
+  city: 'Ajegunle'
+}
+
+const { firstname, lastname, country, city, ...theOneIdidnotInclude } = _user
+
+console.log(theOneIdidnotInclude)

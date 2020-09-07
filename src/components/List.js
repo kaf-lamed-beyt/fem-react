@@ -1,14 +1,22 @@
 import React from 'react'
 
+
 const List = ({ list }) => {
   return (
-    <div className="list__base">
-      {list.map(item => {
-        return <Item key={item.objectID} {...item} />
-      })}
-    </div>
+    
   )
 }
+
+//----- second approach ----//
+// const List = ({ list }) => {
+//   return (
+//     <div className="list__base">
+//       {list.map(item => {
+//         return <Item key={item.objectID} {...item} />
+//       })}
+//     </div>
+//   )
+// }
 
 const Item = ({ title, author }) => {
   return (
