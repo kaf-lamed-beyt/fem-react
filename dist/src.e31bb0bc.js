@@ -28410,7 +28410,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _react = _interopRequireWildcard(require("react"));
+var _react = _interopRequireDefault(require("react"));
 
 var _Search = _interopRequireDefault(require("./Search"));
 
@@ -28419,10 +28419,6 @@ var _List = _interopRequireDefault(require("./List"));
 var _data = require("../assets/data");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
@@ -28439,10 +28435,14 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var App = function App() {
   var stories = _data.list;
 
-  var _useState = (0, _react.useState)(''),
-      _useState2 = _slicedToArray(_useState, 2),
-      searchTerm = _useState2[0],
-      setSearchTerm = _useState2[1];
+  var _React$useState = _react.default.useState(localStorage.getItem('search') || 'React'),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      searchTerm = _React$useState2[0],
+      setSearchTerm = _React$useState2[1];
+
+  _react.default.useEffect(function () {
+    localStorage.setItem('search', searchTerm);
+  }, [searchTerm]);
 
   var handleSearch = function handleSearch(event) {
     setSearchTerm(event.target.value);

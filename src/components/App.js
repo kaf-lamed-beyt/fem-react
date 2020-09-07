@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Search from './Search'
 import List from './List'
 import { list } from '../assets/data'
@@ -6,7 +6,13 @@ import { list } from '../assets/data'
 const App = () => {
   const stories = list
 
-  const [searchTerm, setSearchTerm] = useState('')
+  const [searchTerm, setSearchTerm] = React.useState(
+    localStorage.getItem('search') || 'React'
+  )
+
+  React.useEffect(() => {
+    localStorage.setItem('search', searchTerm)
+  }, [searchTerm])
 
   const handleSearch = event => {
     setSearchTerm(event.target.value)
