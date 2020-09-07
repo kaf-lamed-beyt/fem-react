@@ -28326,9 +28326,30 @@ var _react = _interopRequireDefault(require("react"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
 var List = function List(_ref) {
   var list = _ref.list;
-  r;
+  return list.map(function (_ref2) {
+    var ObjectID = _ref2.ObjectID,
+        item = _objectWithoutProperties(_ref2, ["ObjectID"]);
+
+    // mapping the properties of the list object
+    // and taking/seperating the ObjectID key
+    // from the object itself by using the Rest
+    // parameter to  include the remaining items
+    // spreading them (the keys) `{..item}` as properties
+    // in the Item component.
+
+    /*#__PURE__*/
+    _react.default.createElement(Item, _extends({
+      key: ObjectID
+    }, item));
+  });
 }; //----- second approach ----//
 // const List = ({ list }) => {
 //   return (
@@ -28341,9 +28362,9 @@ var List = function List(_ref) {
 // }
 
 
-var Item = function Item(_ref2) {
-  var title = _ref2.title,
-      author = _ref2.author;
+var Item = function Item(_ref3) {
+  var title = _ref3.title,
+      author = _ref3.author;
   return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h2", null, title), /*#__PURE__*/_react.default.createElement("p", null, author));
 };
 
