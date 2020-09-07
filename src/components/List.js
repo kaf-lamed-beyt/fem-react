@@ -1,16 +1,16 @@
 import React from 'react'
 
-
 const List = ({ list }) => {
   return (
     <div className="list__base">
       {list.map(item => {
-        <Item key={item.ObjectID} item={item} />
+        return (
+          <Item key={item.objectID} item={item} />
+        )
       })}
     </div>
   )
 }
-
 
 const Item = ({ item }) => {
   return (
@@ -18,16 +18,11 @@ const Item = ({ item }) => {
       <h2>{item.title}</h2>
       <p>{item.author}</p>
     </div>
-  )  
+  )
 }
- 
-
 
 
 export default List
-
-
-
 
 
 

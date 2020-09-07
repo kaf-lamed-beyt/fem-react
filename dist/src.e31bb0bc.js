@@ -28331,9 +28331,8 @@ var List = function List(_ref) {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "list__base"
   }, list.map(function (item) {
-    /*#__PURE__*/
-    _react.default.createElement(Item, {
-      key: item.ObjectID,
+    return /*#__PURE__*/_react.default.createElement(Item, {
+      key: item.objectID,
       item: item
     });
   }));
