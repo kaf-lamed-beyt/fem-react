@@ -4,9 +4,7 @@ const List = ({ list }) => {
   return (
     <div className="list__base">
       {list.map(item => {
-        return (
-          <Item key={item.objectID} item={item} />
-        )
+        return <Item key={item.objectID} item={item} />
       })}
     </div>
   )
@@ -21,21 +19,18 @@ const Item = ({ item }) => {
   )
 }
 
-
 export default List
-
-
 
 // --- third approach ---//
 //const List = ({ list }) => {
 //  return (
 //    list.map(({ ObjectID, ...item}) => {
-      // mapping the properties of the list object
-      // and taking/seperating the ObjectID key
-      // from the object itself by using the Rest
-      // parameter to  include the remaining items
-      // spreading them (the keys) `{..item}` as properties
-      // in the Item component.
+// mapping the properties of the list object
+// and taking/seperating the ObjectID key
+// from the object itself by using the Rest
+// parameter to  include the remaining items
+// spreading them (the keys) `{..item}` as properties
+// in the Item component.
 //      <Item key={ObjectID} {...item} />
 //    })
 //  )

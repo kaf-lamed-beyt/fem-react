@@ -28402,7 +28402,45 @@ var list = [{
 exports.list = list;
 var messages = ['React', 'Re: React', 'Re:Re: React', 'Babalawo', 'Awo Jesu', 'Lion of the tribe of judah', 'blah blah', 'Orisabunmi', 'more blah blah blah', 'No one knows tomorrow, Asa'];
 exports.messages = messages;
-},{}],"components/App.js":[function(require,module,exports) {
+},{}],"assets/custom_hooks.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.useSemiPersistentState = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var useSemiPersistentState = function useSemiPersistentState() {
+  var _React$useState = _react.default.useState(localStorage.getItem('search') || ''),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      searchTerm = _React$useState2[0],
+      setSearchTerm = _React$useState2[1];
+
+  _react.default.useEffect(function () {
+    localStorage.setItem('search', searchTerm);
+  }, [searchTerm]);
+
+  return [searchTerm, setSearchTerm];
+};
+
+exports.useSemiPersistentState = useSemiPersistentState;
+},{"react":"../node_modules/react/index.js"}],"components/App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28417,6 +28455,8 @@ var _Search = _interopRequireDefault(require("./Search"));
 var _List = _interopRequireDefault(require("./List"));
 
 var _data = require("../assets/data");
+
+var _custom_hooks = require("../assets/custom_hooks");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28435,14 +28475,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var App = function App() {
   var stories = _data.list;
 
-  var _React$useState = _react.default.useState(localStorage.getItem('search') || ''),
-      _React$useState2 = _slicedToArray(_React$useState, 2),
-      searchTerm = _React$useState2[0],
-      setSearchTerm = _React$useState2[1];
-
-  _react.default.useEffect(function () {
-    localStorage.setItem('search', searchTerm);
-  }, [searchTerm]);
+  var _useSemiPersistentSta = (0, _custom_hooks.useSemiPersistentState)(),
+      _useSemiPersistentSta2 = _slicedToArray(_useSemiPersistentSta, 2),
+      searchTerm = _useSemiPersistentSta2[0],
+      setSearchTerm = _useSemiPersistentSta2[1];
 
   var handleSearch = function handleSearch(event) {
     setSearchTerm(event.target.value);
@@ -28466,7 +28502,7 @@ var App = function App() {
 
 var _default = App;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./Search":"components/Search.js","./List":"components/List.js","../assets/data":"assets/data.js"}],"components/Mailbox.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./Search":"components/Search.js","./List":"components/List.js","../assets/data":"assets/data.js","../assets/custom_hooks":"assets/custom_hooks.js"}],"components/Mailbox.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
