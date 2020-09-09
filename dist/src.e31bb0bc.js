@@ -28435,7 +28435,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var App = function App() {
   var stories = _data.list;
 
-  var _React$useState = _react.default.useState(localStorage.getItem('search') || 'React'),
+  var _React$useState = _react.default.useState(localStorage.getItem('search') || ''),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       searchTerm = _React$useState2[0],
       setSearchTerm = _React$useState2[1];
@@ -32693,7 +32693,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "45775" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "37269" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

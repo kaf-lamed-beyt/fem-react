@@ -7,7 +7,7 @@ const App = () => {
   const stories = list
 
   const [searchTerm, setSearchTerm] = React.useState(
-    localStorage.getItem('search') || 'React'
+    localStorage.getItem('search') || ''
   )
 
   React.useEffect(() => {
