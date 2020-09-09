@@ -28427,16 +28427,17 @@ function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var useSemiPersistentState = function useSemiPersistentState() {
-  var _React$useState = _react.default.useState(localStorage.getItem('search') || ''),
+  // destructure arbitrary array values
+  var _React$useState = _react.default.useState(localStorage.getItem('value') || ''),
       _React$useState2 = _slicedToArray(_React$useState, 2),
-      searchTerm = _React$useState2[0],
-      setSearchTerm = _React$useState2[1];
+      value = _React$useState2[0],
+      setValue = _React$useState2[1];
 
   _react.default.useEffect(function () {
-    localStorage.setItem('search', searchTerm);
-  }, [searchTerm]);
+    localStorage.setItem('search', value);
+  }, [value]);
 
-  return [searchTerm, setSearchTerm];
+  return [value, setValue];
 };
 
 exports.useSemiPersistentState = useSemiPersistentState;

@@ -12,10 +12,10 @@ const App = () => {
   const handleSearch = (event) => {
     setSearchTerm(event.target.value)
   }
+  
   // pass an handler that filters
   // the search keyword before rendering the
   // list in the app component
-
   const searchedStories = stories.filter(story => {
     return story.title.toLowerCase().includes(searchTerm.toLocaleLowerCase())
   })

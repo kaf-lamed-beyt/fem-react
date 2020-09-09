@@ -1,13 +1,14 @@
 import React from 'react'
 
 export const useSemiPersistentState = () => {
-  const [searchTerm, setSearchTerm] = React.useState(
-    localStorage.getItem('search') || ''
+  // destructure arbitrary array values
+  const [value, setValue] = React.useState(
+    localStorage.getItem('value') || ''
   )
 
   React.useEffect(() => {
-    localStorage.setItem('search', searchTerm)
-  }, [searchTerm])
+    localStorage.setItem('search', value)
+  }, [value])
 
-  return [searchTerm, setSearchTerm]
+  return [value, setValue]
 }
